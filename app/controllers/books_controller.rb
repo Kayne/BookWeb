@@ -2,11 +2,12 @@ class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:show]
 
   def index
-    @book = Book.all
+    @books= Book.all
   end
 
   def show
-  # To jest dla testów Devise - tutaj będzie wyświetlana konkretna książka (po ID)
+  # Wymagana autoryzacja jest tylko dla testów Devise
+    @book = Book.find(params[:id])
   end
 
 end
