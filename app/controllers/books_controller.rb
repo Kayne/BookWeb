@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:show]
 
   def index
+    @book = Book.all
   end
 
   def show
