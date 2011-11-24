@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:show, :new, :create]
 
@@ -6,7 +7,7 @@ before_filter :authenticate_user!, :only => [:show, :new, :create]
   end
 
   def show
-  # Wymagana autoryzacja jest tylko dla testów Devise
+  # Wymagana autoryzacja
     @book = Book.find(params[:id])
   end
 
@@ -21,16 +22,26 @@ before_filter :authenticate_user!, :only => [:show, :new, :create]
   end
 
   def create
-    @book = Book.new(params[:book])
+    @book = Book.find_by_title(params[:book][:title])
+    if (@book == nil)
+    
+      @book = Book.new(params[:book])
 
-    respond_to do |format|
-      if @book.save
-        flash[:notice] = "Dodano."
-	format.html { redirect_to(@book) }
-	format.xml  { render :xml => @book, :status => :created, :location => @book }
-      else
-        format.html { render :action => "new" }
-	format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @book.save
+          flash[:notice] = "Dodano."
+	  format.html { redirect_to(@book) }
+	  format.xml  { render :xml => @book, :status => :created, :location => @book }
+        else
+          format.html { render :action => "new" }
+	  format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        flash[:notice] = "Już istnieje taka książka."
+        format.html { redirect_to(@book) }
+        format.xml { render :xml => @book, location => @book }
       end
     end
   end
