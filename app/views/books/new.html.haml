@@ -1,11 +1,9 @@
 %h1 Dodaj nową książkę
 
 = form_for(@book, :html => { :multipart => true }) do |f|
-   = f.error_messages
-
    %p
       = f.label :title, "Tytuł książki"
-      = f.text_field :name
+      = f.text_field :title
    %p
       = f.label :desc, "Opis książki"
       = f.text_area :desc
@@ -17,4 +15,4 @@
       = f.file_field :photo
    %p
       = f.submit "Dodaj pozycję"
-%p= link_to 'Wróć', books_path %>
+%p= link_to 'Wróć', books_path

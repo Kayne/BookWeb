@@ -9,6 +9,9 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<% if user_signed_in? && action_name != "new" then %>
+<%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %>
+<% end %>
 <%= yield %>
 
 </body>
