@@ -11,13 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123173626) do
+ActiveRecord::Schema.define(:version => 20111124132255) do
 
   create_table "books", :force => true do |t|
-    t.string "title"
-    t.text   "desc"
-    t.string "author"
-    t.string "photo"
+    t.string   "title"
+    t.text     "desc"
+    t.string   "author"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", :force => true do |t|
