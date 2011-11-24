@@ -1,0 +1,58 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+en:
+  errors:
+    messages:
+      expired: "wygasł, proszę wywołać nowy"
+      not_found: "nie znaleziono"
+      already_confirmed: "już potwierdzony, proszę spróbować się zalogować"
+      not_locked: "nie zostało zablokowane"
+      not_saved:
+        one: "Jeden błąd nie pozwala %{resource} na zapisanie:"
+        other: "%{count} błędów nie pozwala %{resource} na zapisanie:"
+
+  devise:
+    failure:
+      already_authenticated: 'Już zalogowano.'
+      unauthenticated: 'Musisz się wpierw zalogować lub zarejestrować żeby kontynuować.'
+      unconfirmed: 'Musisz potwierdzić swoje konto.'
+      locked: 'To konto zostało zablokowane.'
+      invalid: 'Nieprawidłowy adres e-mail lub hasło.'
+      invalid_token: 'Nieprawidłowy token autoryzacji.'
+      timeout: 'Ta sesja wygasła, proszę zalogować się ponownie.'
+      inactive: 'To konto nie zostało jeszcze aktywowane.'
+    sessions:
+      signed_in: 'Zalogowano.'
+      signed_out: 'Wylogowano.'
+    passwords:
+      send_instructions: 'Dostaniesz e-mail z instrukcjami jak zmienić swoje hasło w przeciągu kilku minut.'
+      updated: 'Twoje hasło zostało zmienione. Możesz się teraz zalogować.'
+      updated_not_active: 'Twoje hasło zostało zmienione.'
+      send_paranoid_instructions: "Jeśli Twój adres e-mail istnieje w naszej bazie danych, dostaniesz odnośnik do przywrócenia hasła na ten adres e-mail."
+    confirmations:
+      send_instructions: 'Dostaniesz adres e-mail z instrukcją jak aktywować swoje konto w przeciągu kilku minut.'
+      send_paranoid_instructions: 'Jeśli Twój adres e-mail istnieje w naszej bazie danych, dostaniesz e-mail z instrukcją jak aktywować swoje konto w przeciągu kilku minut.'
+      confirmed: 'Twoje konto zostało aktywowane. Zalogowano.'
+    registrations:
+      signed_up: 'Witaj! Zalogowano poprawnie.'
+      inactive_signed_up: 'Zarejestrowano poprawnie. Jednak, nie można automatycznie zalogować, ponieważ konto jest %{reason}.'
+      updated: 'Zaktualizowano konto.'
+      destroyed: 'Żegnaj! Twoje konto zostało usunięte. Mamy nadzieję, że wkrótce do nas wrócisz!'
+      reasons:
+        inactive: 'nieaktywne'
+        unconfirmed: 'nieaktywowane'
+        locked: 'zablokowane'
+    unlocks:
+      send_instructions: 'Otrzymasz adres e-mail z instrukcją jak odblokować swoje konto w przeciągu kilku minut.'
+      unlocked: 'Twoje konto zostało odblokowane. Zalogowano.'
+      send_paranoid_instructions: 'Jeśli Twoje konto istnieje, otrzymasz na swój adres e-mail instrukcję jak odblokować swoje konto w przeciągu kilku minut.'
+    omniauth_callbacks:
+      success: 'Zalogowano z %{kind}.'
+      failure: 'Nie można było zalogować z %{kind} ponieważ "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrukcja aktywacji konta'
+      reset_password_instructions:
+        subject: 'Instrukcja przywracania hasła'
+      unlock_instructions:
+        subject: 'Instrukcja odblokowania konta'
