@@ -1,6 +1,6 @@
 # encoding: utf-8
 class BooksController < ApplicationController
-before_filter :authenticate_user!, :only => [:show, :new, :create]
+before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
 
   def index
     @books= Book.all
@@ -9,6 +9,11 @@ before_filter :authenticate_user!, :only => [:show, :new, :create]
   def show
   # Wymagana autoryzacja
     @book = Book.find(params[:id])
+  end
+
+  def my
+    #My books
+    @books = Booksassigment.find_all_by_user_id(current_user.id)
   end
 
   def new
@@ -29,6 +34,8 @@ before_filter :authenticate_user!, :only => [:show, :new, :create]
 
       respond_to do |format|
         if @book.save
+	  @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+	  @booksassigment.save
           flash[:notice] = "Dodano."
 	  format.html { redirect_to(@book) }
 	  format.xml  { render :xml => @book, :status => :created, :location => @book }
