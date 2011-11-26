@@ -7,17 +7,17 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
   end
 
   def show
-  # Wymagana autoryzacja
+  # Need authorization
     @book = Book.find(params[:id])
   end
 
   def my
-    #My books
+  # Need authorization
     @books = Booksassigment.find_all_by_user_id(current_user.id)
   end
 
   def new
-  # Wymagana autoryzacja
+  # Need authorization
     @book = Book.new
 
     respond_to do |format|
