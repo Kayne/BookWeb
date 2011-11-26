@@ -16,7 +16,7 @@
 <p>Zalogowany jako <%= link_to current_user.email, :controller => "users", :action => "edit" %>!</p>
 <% end %>
 <% if user_signed_in? && (action_name != "new" || controller_name != "books") then %>
-<p><%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %></p>
+<p><%= link_to "Zobacz swoje pozycje", :controller => "books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %></p>
 <% end %>
 
 <%= yield %>
