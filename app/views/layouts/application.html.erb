@@ -10,14 +10,15 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<% if user_signed_in? && action_name != "new" then %>
+<% if !user_signed_in? then %>
+<p>Jesteś nie zalogowany. <%= link_to "Zaloguj się", :controller => "users", :action => "sign_in" %>!</p>
+<% else %>
+<p>Zalogowany jako <%= link_to current_user.email, :controller => "users", :action => "edit" %>!</p>
+<% end %>
+<% if user_signed_in? && (action_name != "new" || controller_name != "books") then %>
 <p><%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %></p>
 <% end %>
-<% if !user_signed_in? then %>
-<p>Jesteś nie zalogowany. <%= link_to "Zaloguj się", :controller => "users", :action => "sign_in" %>.</p>
-<% else %>
-<p>Witaj, <%= link_to current_user.email, :controller => "users", :action => "edit" %>!</p>
-<% end %>
+
 <%= yield %>
 
 </body>

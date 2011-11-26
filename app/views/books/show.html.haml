@@ -1,7 +1,6 @@
 %h1= @book.title
 %p
-   - if @book.photo.url != "" then
-      = image_tag @book.photo.url(:medium)
+   = image_tag @book.photo.url(:medium)
 %p
    = @book.desc
    %br
