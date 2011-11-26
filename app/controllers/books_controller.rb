@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
 
   def index
-    @books= Book.all
+    @books = Book.all(:order => 'id DESC', :limit => 30);
   end
 
   def show
