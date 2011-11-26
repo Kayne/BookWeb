@@ -5,5 +5,10 @@
    = @book.desc
    %br
    %i= @book.author
+%p Książkę posiadają:
+%ul
+   - @assigments.each do |a|
+      %li= a.user.email
+%br
+%br
 = link_to "Powrót na główną", {:action => "index"}
-
