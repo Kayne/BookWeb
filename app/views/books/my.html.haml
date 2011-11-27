@@ -3,6 +3,9 @@
 %ul
    - @books.each do |b|
       %li= link_to b.book.title, :action => "show", :id => b.book.id
+      %i= link_to "Usuń pozycję", {:action => 'destroy', :id => b.book.id}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycję z swoich książek?", :method => :delete
+      %br
+      %br
 %br
 %br
 %p= link_to "Wróć na główną", :controller => "books"
