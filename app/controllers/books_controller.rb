@@ -54,4 +54,15 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
     end
   end
 
+  def destroy
+    @book = Booksassigment.where(:user_id => current_user.id, :book_id => params[:id]).first
+    if @book.destroy
+      flash[:notice] = "Usunięto tą pozycje z Twoich książek."
+      format.html { redirect_to :back }
+    else
+      flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
+      format.html { redirect_to :back }
+    end
+  end
+
 end
