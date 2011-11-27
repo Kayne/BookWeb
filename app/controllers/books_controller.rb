@@ -46,10 +46,21 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
         end
       end
     else
-      respond_to do |format|
-        flash[:notice] = "Już istnieje taka książka."
-        format.html { redirect_to(@book) }
-        format.xml { render :xml => @book, location => @book }
+      @booksassigment = Booksassigment.where(:user_id => current_user.id, :book_id => @book.id).first
+      if @booksassigment != nil
+        respond_to do |format|
+          flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
+          format.html { redirect_to(@book) }
+          format.xml { render :xml => @book, location => @book }
+        end
+      else
+        @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+	@booksassigment.save
+        respond_to do |format|
+	  flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
+	  format.html { redirect_to(@book) }
+	  format.xml { render :xml => @book, location => @book }
+	end
       end
     end
   end
@@ -57,11 +68,15 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my]
   def destroy
     @book = Booksassigment.where(:user_id => current_user.id, :book_id => params[:id]).first
     if @book.destroy
-      flash[:notice] = "Usunięto tą pozycje z Twoich książek."
-      format.html { redirect_to :back }
+      respond_to do |format|
+        flash[:notice] = "Usunięto tą pozycje z Twoich książek."
+        format.html { redirect_to :back }
+      end
     else
-      flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
-      format.html { redirect_to :back }
+      respond_to do |format|
+        flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
+        format.html { redirect_to :back }
+      end
     end
   end
 
