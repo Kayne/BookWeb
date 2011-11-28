@@ -1,0 +1,19 @@
+%h1 Edytuj książkę
+%p
+   Możesz użyć poniższego formularza by edytować dodaną już książkę.
+   = form_for(@book, :html => { :multipart => true }) do |f|
+      %p
+         %h2= @book.title
+      %p
+         = f.label :desc, "Opis książki"
+         = f.text_area :desc, :value => @book.desc
+      %p
+         = f.label :author, "Autor książki"
+         = f.text_field :author, :value => @book.author
+      %p
+         = f.label :photo, "Zdjęcie"
+         = f.file_field :photo, :value => @book.photo.url
+         %i (Zdjęcie nie jest obowiązkowe!)
+      %p
+         = f.submit "Edytuj pozycję"
+%p= link_to 'Wróć', books_path

@@ -23,7 +23,6 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @post }
     end
   end
 
@@ -39,10 +38,8 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
 	  @booksassigment.save
           flash[:notice] = "Dodano."
 	  format.html { redirect_to(@book) }
-	  format.xml  { render :xml => @book, :status => :created, :location => @book }
         else
           format.html { render :action => "new" }
-	  format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
         end
       end
     else
@@ -51,7 +48,6 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
         respond_to do |format|
           flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
           format.html { redirect_to(@book) }
-          format.xml { render :xml => @book, location => @book }
         end
       else
         @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
@@ -59,7 +55,6 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
         respond_to do |format|
 	  flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
 	  format.html { redirect_to(@book) }
-	  format.xml { render :xml => @book, location => @book }
 	end
       end
     end
@@ -80,4 +75,19 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
     end
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    respond_to do |format|
+      if @book.update_attributes(params[:book])
+        flash[:notice] = "Pozycja została zaktualizowana."
+        format.html  { redirect_to(@book) }
+      else
+        format.html  { redirect_to :back }
+      end
+    end
+  end
 end
