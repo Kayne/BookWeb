@@ -2,7 +2,7 @@
 %p Tutaj znajduje się lista książek, które posiadasz
 %ul
    - @books.each do |b|
-      %li= link_to b.book.title, :action => "show", :id => b.book.id
+      %li= link_to b.book.title, :action => "show", :id => b.book.slug
       %i= link_to "Usuń pozycję", {:action => 'destroy', :id => b.book.id}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycję z swoich książek?", :method => :delete
       %br
       %br
