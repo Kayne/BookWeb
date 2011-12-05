@@ -8,20 +8,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="topHeader">
+<p>
+<% if !user_signed_in? then %>
+<span>Jesteś nie zalogowany. <%= link_to "Zaloguj się", :controller => "users", :action => "sign_in" %>!</span>
+<% else %>
+<span>Zalogowany jako <%= link_to current_user.email, :controller => "users", :action => "edit" %>!
+<%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></span>
+<% end %>
+
+<span style="float: right;"><%= link_to "Profile użytkowników", :controller => "profiles" %>
+<% if user_signed_in? && (action_name != "new" || controller_name !=     "books") then %> || <%= link_to "Zobacz swoje pozycje", :controller => "books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "bo    oks", :action => "new" %><% end %></span>
+</p>
+</div>
+
+<div class="text">
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<% if !user_signed_in? then %>
-<p>Jesteś nie zalogowany. <%= link_to "Zaloguj się", :controller => "users", :action => "sign_in" %>!</p>
-<% else %>
-<p>Zalogowany jako <%= link_to current_user.email, :controller => "users", :action => "edit" %>!
-<%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></p>
-<% end %>
+
 <p><%= link_to "Profile użytkowników", :controller => "profiles" %> <% if user_signed_in? && (action_name != "new" || controller_name != "books") then %>
 || <%= link_to "Zobacz swoje pozycje", :controller => "books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %>
 <% end %>
 </p>
 
 <%= yield %>
-
+</div>
+</div>
 </body>
 </html>
