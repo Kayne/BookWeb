@@ -9,7 +9,7 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
   def show
   # Need authorization
     @book = Book.find(params[:id])
-    @assigments = Booksassigment.find_all_by_book_id(params[:id])
+    @assigments = Booksassigment.find_all_by_book_id(@book.id)
   end
 
   def my

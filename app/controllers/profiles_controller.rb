@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    @assigments = Booksassigment.find_all_by_user_id(params[:id])
+    @assigments = Booksassigment.find_all_by_user_id(@user.id)
   end
 
 end
