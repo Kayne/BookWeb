@@ -4,3 +4,6 @@
    %ul
       - @users.each do |u|
          %li= link_to u.email, {:action => "show", :id => u.id }
+%br
+%br
+= link_to "Powrót na stronę główną", :controller => "books"
