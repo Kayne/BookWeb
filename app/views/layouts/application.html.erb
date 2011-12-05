@@ -11,14 +11,14 @@
 <div class="topHeader">
 <p>
 <% if !user_signed_in? then %>
-<span>Jesteś nie zalogowany. <%= link_to "Zaloguj się", :controller => "users", :action => "sign_in" %>!</span>
+<span>Jesteś nie zalogowany. <%= link_to "Zaloguj się", new_user_session_path %>!</span>
 <% else %>
-<span>Zalogowany jako <%= link_to current_user.email, :controller => "users", :action => "edit" %>!
+<span>Zalogowany jako <%= link_to current_user.email, edit_user_registration_path %>!
 <%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></span>
 <% end %>
 
-<span style="float: right;"><%= link_to "Profile użytkowników", :controller => "profiles" %>
-<% if user_signed_in? && (action_name != "new" || controller_name !=     "books") then %> || <%= link_to "Zobacz swoje pozycje", :controller => "books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "bo    oks", :action => "new" %><% end %></span>
+<span style="float: right;"><%= link_to "Profile użytkowników", :controller => "/profiles" %>
+<% if user_signed_in? && (action_name != "new" || controller_name != "books") then %> || <%= link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "/books", :action => "new" %><% end %></span>
 </p>
 </div>
 
