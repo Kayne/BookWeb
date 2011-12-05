@@ -27,11 +27,6 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<p><%= link_to "Profile użytkowników", :controller => "profiles" %> <% if user_signed_in? && (action_name != "new" || controller_name != "books") then %>
-|| <%= link_to "Zobacz swoje pozycje", :controller => "books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "books", :action => "new" %>
-<% end %>
-</p>
-
 <%= yield %>
 </div>
 </div>
