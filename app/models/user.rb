@@ -7,10 +7,9 @@ class User < ActiveRecord::Base
   has_many :books, :through => :booksassignments
 
   attr_accessor :login
-  attr_accessible :login
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
 
   protected
 
