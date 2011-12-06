@@ -2,6 +2,10 @@
 %p
    Możesz użyć poniższego formularza by dodać nową książkę.
    = form_for(@book, :html => { :multipart => true }) do |f|
+      - if @book.errors.any?
+         - @book.errors.full_messages.each do |msg|
+            %li= msg
+
       %p
          = f.label :title, "Tytuł książki"
          = f.text_field :title
