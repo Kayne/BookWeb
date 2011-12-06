@@ -44,5 +44,8 @@ module Bookweb
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Default translation
+    config.i18n.default_locale = :pl
   end
 end
