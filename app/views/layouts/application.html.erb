@@ -17,8 +17,8 @@
 <%= link_to "Wyloguj się", destroy_user_session_path, :method => :delete %></span>
 <% end %>
 
-<span style="float: right;"><%= link_to "Profile użytkowników", :controller => "/profiles" %>
-<% if user_signed_in? && (action_name != "new" || controller_name != "books") then %> || <%= link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my" %> || <%= link_to "Dodaj nową książkę", :controller => "/books", :action => "new" %><% end %></span>
+<span style="float: right;"><%= link_to "Strona główna", books_path %> | <%= link_to "Profile użytkowników", :controller => "/profiles" %>
+<% if user_signed_in? then %> || <%= link_to "Mój profil", :controller => "/profiles", :action => "show", :id => current_user.id %> || <%= link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my" %> || <%= link_to "Dodaj nową książkę", new_book_path %><% end %></span>
 </p>
 </div>
 
