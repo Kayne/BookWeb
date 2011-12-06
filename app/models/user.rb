@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  validates_presence_of :username
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
 
