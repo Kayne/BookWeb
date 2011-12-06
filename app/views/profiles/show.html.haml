@@ -2,7 +2,7 @@
 %p Posiada książki:
 %ul
    - @assigments.each do |a|
-      %li= a.book.title
+      %li= link_to a.book.title, :controller => "/books", :action => "show", :id => a.book.slug
 %br
 %br
 = link_to "Powrót do listy użytkowników", {:action => "index"}
