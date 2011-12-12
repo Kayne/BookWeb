@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :booksassignments
-  has_many :books, :through => :booksassignments
+  has_many :booksassigments
+  has_many :books, :through => :booksassigments
 
   attr_accessor :login
 

@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  has_many :booksassignments
-  has_many :users, :through => :booksassignments
+  has_many :booksassigments
+  has_many :users, :through => :booksassigments
   
   validates_presence_of :title, :desc, :author
   validates_uniqueness_of :title
