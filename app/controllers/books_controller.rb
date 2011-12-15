@@ -1,6 +1,6 @@
 # encoding: utf-8
 class BooksController < ApplicationController
-before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy, :edit, :update]
+before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit, :update]
 
   def index
     @books = Book.all(:order => 'id DESC', :limit => 30);

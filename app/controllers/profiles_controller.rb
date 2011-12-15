@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     @assigments = Booksassigment.find_all_by_user_id(@user.id)
   end
 

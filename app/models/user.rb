@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
 
+  extend FriendlyId
+  friendly_id :username
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
 
