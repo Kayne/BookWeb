@@ -34,15 +34,17 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
 
       respond_to do |format|
         if @book.save
-	  @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
-	  @booksassigment.save
+	      @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+	      @booksassigment.save
           flash[:notice] = "Dodano."
-	  format.html { redirect_to(@book) }
+	      format.html { redirect_to(@book) }
         else
           format.html { render :action => "new" }
         end
       end
+
     else
+    
       @booksassigment = Booksassigment.where(:user_id => current_user.id, :book_id => @book.id).first
       if @booksassigment != nil
         respond_to do |format|
@@ -51,11 +53,11 @@ before_filter :authenticate_user!, :only => [:show, :new, :create, :my, :destroy
         end
       else
         @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
-	@booksassigment.save
+	    @booksassigment.save
         respond_to do |format|
-	  flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
-	  format.html { redirect_to(@book) }
-	end
+	      flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
+	      format.html { redirect_to(@book) }
+	    end
       end
     end
   end

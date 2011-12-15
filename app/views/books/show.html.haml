@@ -5,7 +5,7 @@
    = @book.desc
    %br
    %i= @book.author
-%p Książkę posiadają:
+%p{:id => "holders"} Książkę posiadają:
 %ul
    - @assigments.each do |a|
       %li= link_to a.user.email, :controller => "/profiles", :action => "show", :id => a.user.id
