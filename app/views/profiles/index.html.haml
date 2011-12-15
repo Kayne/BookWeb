@@ -1,9 +1,9 @@
 %h1 Użytkownicy BookWeb
 %p
-   Poniżej znajduje się lista ostatnich trzydziestu zarejestrowanych użytkowników.
+   Poniżej znajduje się lista zarejestrowanych użytkowników.
    %ul
       - @users.each do |u|
-         %li= link_to u.email, {:action => "show", :id => u.id }
+         %li= link_to u.username, {:action => "show", :id => u.username }
 %br
 %br
 = link_to "Powrót na stronę główną", :controller => "books"
