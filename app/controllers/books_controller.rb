@@ -3,8 +3,10 @@ class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit, :update]
 
   def index
-    @books = Book.all(:order => 'id DESC', :limit => 30);
-    @paginate = @books.paginate(:page => params[:page], :per_page => 3)
+    @query = Book.search(params[:q])
+    @paginate = @query.result(:distinct => true)
+    #@books = Book.all(:order => 'id DESC', :limit => 30);
+    @paginate = @paginate.paginate(:page => params[:page], :per_page => 3)
   end
 
   def show

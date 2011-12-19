@@ -8,3 +8,14 @@
    %br
    = will_paginate @paginate
    = page_entries_info @paginate, :html => false
+%br
+%br
+%p
+   Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
+   = search_form_for @query do |f|
+      %p
+         = f.label :title_cont
+         = f.text_field :title_cont
+      %p
+         = f.submit
+
