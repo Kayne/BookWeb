@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  has_many :booksassigments
+  has_many :booksassigments, :dependent => :destroy
   has_many :users, :through => :booksassigments
   
   validates_presence_of :title, :desc, :author
