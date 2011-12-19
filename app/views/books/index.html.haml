@@ -1,13 +1,15 @@
 %h1 Witaj na BookWeb :)
 %p
    Poniżej znajduje się lista ostatnich trzydziestu pozycji.
+%p
+   = page_entries_info @paginate, :html => false
+%p
    %ul
       - @paginate.each do |b|
          %li= link_to b.title, {:action => "show", :id => b.slug }
    %br
    %br
    = will_paginate @paginate
-   = page_entries_info @paginate, :html => false
 %br
 %br
 %p
