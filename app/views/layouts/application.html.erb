@@ -9,13 +9,7 @@
 </head>
 <body>
 <%= render "layouts/menu" %>
-<% if notice != nil %>
-<p class="notice"><%= notice %></p>
-<% end %>
-<% if alert != nil %>
-<p class="alert"><%= alert %></p>
-<% end %>
-
+<%= render "layouts/notices" %>
 <div class="container">
 <%= yield %>
 </div>
