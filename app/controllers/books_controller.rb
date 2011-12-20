@@ -45,76 +45,64 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
   def new
   # Need authorization
     @book = Book.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   def create
+  # Need authorization
     @book = Book.find_by_title(params[:book][:title])
     if (@book == nil)
     
       @book = Book.new(params[:book])
 
-      respond_to do |format|
-        if @book.save
-	      @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
-	      @booksassigment.save
-          flash[:notice] = "Dodano."
-	      format.html { redirect_to(@book) }
-        else
-          format.html { render :action => "new" }
-        end
+      if @book.save
+	    @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+	    @booksassigment.save
+        flash[:notice] = "Dodano."
+	    redirect_to(@book)
+      else
+        render :action => "new"
       end
 
     else
     
       @booksassigment = Booksassigment.where(:user_id => current_user.id, :book_id => @book.id).first
       if @booksassigment != nil
-        respond_to do |format|
-          flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
-          format.html { redirect_to(@book) }
-        end
+        flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
+        redirect_to(@book)
       else
         @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
 	    @booksassigment.save
-        respond_to do |format|
-	      flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
-	      format.html { redirect_to(@book) }
-	    end
+        flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
+	    redirect_to(@book)
       end
     end
   end
 
   def destroy
+  # Need authorization
     @book = Booksassigment.where(:user_id => current_user.id, :book_id => params[:id]).first
     if @book.destroy
-      respond_to do |format|
-        flash[:notice] = "Usunięto tą pozycje z Twoich książek."
-        format.html { redirect_to :back }
-      end
+      flash[:notice] = "Usunięto tą pozycje z Twoich książek."
+      redirect_to :back
     else
-      respond_to do |format|
-        flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
-        format.html { redirect_to :back }
-      end
+      flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
+      redirect_to :back
     end
   end
 
   def edit
+  # Need authorization
     @book = Book.find(params[:id])
   end
 
   def update
+  # Need authorization
     @book = Book.find(params[:id])
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        flash[:notice] = "Pozycja została zaktualizowana."
-        format.html  { redirect_to(@book) }
-      else
-        format.html  { redirect_to :back }
-      end
+    if @book.update_attributes(params[:book])
+      flash[:notice] = "Pozycja została zaktualizowana."
+      redirect_to(@book)
+    else
+      format.html redirect_to :back
     end
   end
 end
