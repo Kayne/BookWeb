@@ -11,3 +11,21 @@
    width: 500px;
    float: left;
 }
+
+.holders {
+   clear: both;
+   margin: 0 auto;
+   width: 350px;
+   ul {
+      list-style-type: nonoe;
+      display: block;
+      li {
+         display: inline;
+         white-space: nowrap;
+      }
+   }
+   li {
+      float: left;
+      a { font-weight: bold; }
+   }
+}
