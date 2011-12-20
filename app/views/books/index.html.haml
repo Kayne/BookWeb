@@ -8,8 +8,8 @@
       %ul
          - @paginate.each do |b|
             %li= link_to b.title, {:action => "show", :id => b.slug }
-      %br
-      %br
+      %br/
+      %br/
       = will_paginate @paginate
 %div{:class => "search_form"}
    %p

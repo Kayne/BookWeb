@@ -5,9 +5,9 @@
 %div{:class => "right_column"}
    %p
       = link_to "Edytuj pozycję", edit_book_path
-      %br
+      %br/
       = @book.desc
-      %br
+      %br/
       %i= @book.author
 %div{:class => "holders"}
    - if @assigments.size > 0 then
@@ -15,8 +15,8 @@
       %ul
          - @assigments.each do |a|
             %li= link_to a.user.username, :controller => "/profiles", :action => "show", :id => a.user.username
-%br
-%br
+%br/
+%br/
 = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
-%br
+%br/
 = link_to "Powrót", :back
