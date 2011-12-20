@@ -18,4 +18,6 @@
             %li= link_to a.user.username, :controller => "/profiles", :action => "show", :id => a.user.username
 %br
 %br
+= link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
+%br
 = link_to "Powrót", :back

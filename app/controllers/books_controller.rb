@@ -20,6 +20,24 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
     @books = Booksassigment.find_all_by_user_id(current_user.id)
   end
 
+  def add
+    @book = Book.find(params[:id])
+    @booka = Booksassigment.find_by_book_id(@book.id)
+    if @booka != nil
+      flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
+    else
+      @assigment = Booksassigment.new
+      @assigment.user_id = current_user.id
+      @assigment.book_id = @book.id
+      if @assigment.save
+        flash[:notice] = "Dodano"
+      else
+        flash[:alert] = "Nie udało się dodać pozycji"
+      end
+    end
+    redirect_to (@book)
+  end
+
   def new
   # Need authorization
     @book = Book.new
