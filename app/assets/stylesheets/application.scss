@@ -16,16 +16,15 @@ body {
     font: 11px;
 }
 
+h1 {
+    text-align: center;
+}
+
 a {
     color: #000;
     &:hover {
        color: $a-hover-color;
-    }
-    
-}
-
-.text {
-    margin: 5px;
+    }  
 }
 
 .topHeader {
@@ -64,4 +63,22 @@ a {
 .alert {
     @include notices;
     background-color: #BC2F00;
+}
+
+.container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 5px;
+}
+.books_list {
+    float: left;
+    width: 600px;
+}
+.search_form {
+    float: left;
+    width: 250px;
+}
+
+.pagination {
+    text-align: center;
 }

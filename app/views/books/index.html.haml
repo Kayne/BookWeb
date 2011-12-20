@@ -1,21 +1,21 @@
 %h1 Witaj na BookWeb :)
-%p
-   Poniżej znajduje się lista ostatnich trzydziestu pozycji.
-%p
-   = page_entries_info @paginate, :html => false
-%p
-   %ul
-      - @paginate.each do |b|
-         %li= link_to b.title, {:action => "show", :id => b.slug }
-   %br
-   %br
-   = will_paginate @paginate
-%br
-%br
-%p
-   Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
-   = search_form_for @query do |f|
-      %p
-         = f.label :title_cont
-         = f.text_field :title_cont
-         = f.submit
+%div{:class => "books_list"}
+   %p
+      Poniżej znajduje się lista ostatnich trzydziestu pozycji.
+   %p{:class => "pagination"}
+      = page_entries_info @paginate, :html => false
+   %p
+      %ul
+         - @paginate.each do |b|
+            %li= link_to b.title, {:action => "show", :id => b.slug }
+      %br
+      %br
+      = will_paginate @paginate
+%div{:class => "search_form"}
+   %p
+      Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
+      = search_form_for @query do |f|
+         %p
+            = f.label :title_cont
+            = f.text_field :title_cont
+            = f.submit

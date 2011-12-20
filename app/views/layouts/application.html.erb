@@ -22,8 +22,6 @@
 </p>
 </div>
 
-<div class="text">
-
 <% if notice != nil %>
 <p class="notice"><%= notice %></p>
 <% end %>
@@ -31,8 +29,10 @@
 <p class="alert"><%= alert %></p>
 <% end %>
 
+<div class="container">
 <%= yield %>
 </div>
+
 </div>
 </body>
 </html>

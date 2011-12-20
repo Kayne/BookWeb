@@ -1,15 +1,14 @@
 %h1= @book.title
-%div{:class => "columns"}
-   %div{:class => "left_column"}
-      %p
-         = image_tag @book.photo.url(:medium)
-   %div{:class => "right_column"}
-      %p
-         = link_to "Edytuj pozycję", edit_book_path
-         %br
-         = @book.desc
-         %br
-         %i= @book.author
+%div{:class => "left_column"}
+   %p
+      = image_tag @book.photo.url(:medium)
+%div{:class => "right_column"}
+   %p
+      = link_to "Edytuj pozycję", edit_book_path
+      %br
+      = @book.desc
+      %br
+      %i= @book.author
 %div{:class => "holders"}
    - if @assigments.size > 0 then
       %p Książkę posiadają:
