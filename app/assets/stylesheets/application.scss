@@ -27,7 +27,7 @@ a {
     }  
 }
 
-.topHeader {
+#topHeader {
     background-color: #222;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     margin: 0 auto;
@@ -41,10 +41,9 @@ a {
             color: $a-hover-color;
         }
     }
-}
-
-.topHeaderRight {
-    float: right;
+    .right {
+        float: right;
+    }
 }
 
 @mixin notices {
