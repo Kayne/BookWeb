@@ -1,6 +1,6 @@
 # encoding: utf-8
 class BooksController < ApplicationController
-before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit, :update]
+before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit, :update, :add]
 
   def index
     @query = Book.search(params[:q])
@@ -21,6 +21,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
   end
 
   def add
+  # Need authorization
     if !@book = Book.find(params[:id], :select => "id, slug")
       flash[:alert] = "Nie ma takiej pozycji! Może ją dodasZ?"
       redirect_to :action => "new"
