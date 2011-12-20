@@ -17,11 +17,14 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
   def my
   # Need authorization
-    @books = Booksassigment.find_all_by_user_id(current_user.id)
+    @books = Booksassigment.find_all_by_user_id(current_user.id, :include => :book)
   end
 
   def add
-    @book = Book.find(params[:id])
+    if !@book = Book.find(params[:id], :select => "id, slug")
+      flash[:alert] = "Nie ma takiej pozycji! Może ją dodasZ?"
+      redirect_to :action => "new"
+    end
     @booka = Booksassigment.find_by_book_id(@book.id)
     if @booka != nil
       flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
