@@ -17,11 +17,12 @@
    margin: 0 auto;
    width: 350px;
    ul {
-      list-style-type: nonoe;
+      list-style-type: none;
       display: block;
       li {
          display: inline;
          white-space: nowrap;
+         margin-right: 5px;
       }
    }
    li {

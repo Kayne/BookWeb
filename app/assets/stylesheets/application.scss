@@ -47,3 +47,20 @@ a {
 .topHeaderRight {
     float: right;
 }
+
+@mixin notices {
+    width: 300px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.notice {
+    @include notices;
+    background-color: #60E000;
+}
+
+.alert {
+    @include notices;
+    background-color: #BC2F00;
+}
