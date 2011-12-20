@@ -6,6 +6,9 @@
  *= require_tree . 
 */
 
+$a-hover-color: #ABABAB;
+$font-color: #FFF;
+
 body {
     margin: 0;
     padding: 0;
@@ -15,9 +18,10 @@ body {
 
 a {
     color: #000;
-}
-a:hover {
-    color: #ABABAB;
+    &:hover {
+       color: $a-hover-color;
+    }
+    
 }
 
 .text {
@@ -30,18 +34,16 @@ a:hover {
     margin: 0 auto;
     padding: 7px;
     padding: 7px;
-    color: #FFF;
+    color: $font-color;
     font-size: 15px;
+    a {
+        color: $font-color;
+        &:hover {
+            color: $a-hover-color;
+        }
+    }
 }
 
 .topHeaderRight {
     float: right;
-}
-
-.topHeader a {
-    color: #FFF;
-}
-
-.topHeader a:hover {
-    color: #ABABAB;
 }
