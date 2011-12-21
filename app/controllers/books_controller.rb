@@ -15,6 +15,11 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
     @assigments = Booksassigment.find_all_by_book_id(@book.id)
   end
 
+  def holders
+    @assigments = Booksassigment.find_all_by_book_id(params[:id])
+    render(:layout => false)
+  end
+
   def my
   # Need authorization
     @books = Booksassigment.find_all_by_user_id(current_user.id, :include => :book)

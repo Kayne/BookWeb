@@ -9,12 +9,9 @@
       = @book.desc
       %br/
       %i= @book.author
-%div{:class => "holders"}
-   - if @assigments.size > 0 then
-      %p Książkę posiadają:
-      %ul
-         - @assigments.each do |a|
-            %li= link_to a.user.username, :controller => "/profiles", :action => "show", :id => a.user.username
+%div{:style => "clear: both;"}
+   = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
+   #holders
 %br/
 %br/
 = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
