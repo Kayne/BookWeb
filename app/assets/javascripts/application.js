@@ -7,8 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-jQuery(function($) {
-$("a[data-update]").live("ajax:success", function(data,status,xhr){
-      $("#"+$(this).attr("data-update")).html(status);
-          });
-          });
+
