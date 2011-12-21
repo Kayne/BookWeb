@@ -4,9 +4,8 @@
       = image_tag @book.photo.url(:medium)
 %div{:class => "right_column"}
    %p
-      = link_to "Edytuj pozycję", edit_book_path
-      %br/
       = @book.desc
+      %br/
       %br/
       %i= @book.author
 %div{:style => "clear: both;"}
@@ -15,5 +14,7 @@
 %br/
 %br/
 = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
+%br/
+= link_to "Edytuj pozycję", edit_book_path
 %br/
 = link_to "Powrót", :back
