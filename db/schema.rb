@@ -14,21 +14,21 @@
 ActiveRecord::Schema.define(:version => 20111206162801) do
 
   create_table "books", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "author"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "slug"
+    t.string   "title",              :null => false
+    t.text     "desc",               :null => false
+    t.string   "author",             :null => false
+    t.string   "photo_file_name",    :null => false
+    t.string   "photo_content_type", :null => false
+    t.integer  "photo_file_size",    :null => false
+    t.datetime "photo_updated_at",   :null => false
+    t.string   "slug",               :null => false
   end
 
   add_index "books", ["slug"], :name => "index_books_on_slug", :unique => true
 
   create_table "booksassigments", :force => true do |t|
-    t.integer "book_id"
-    t.integer "user_id"
+    t.integer "book_id", :null => false
+    t.integer "user_id", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -44,10 +44,11 @@ ActiveRecord::Schema.define(:version => 20111206162801) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
+    t.string   "username",                                              :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

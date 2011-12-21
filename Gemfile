@@ -14,6 +14,7 @@ gem 'friendly_id', '~> 4.0.0.beta14'
 gem 'rails-i18n'
 gem 'will_paginate'
 gem 'ransack'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
