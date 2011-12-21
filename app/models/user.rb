@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  validates_presence_of :username
+  validates_presence_of :username, :email, :password
 
   extend FriendlyId
   friendly_id :username
