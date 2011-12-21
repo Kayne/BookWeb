@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'pg'
 gem 'memcache-client'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
