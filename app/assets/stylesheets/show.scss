@@ -13,14 +13,12 @@
    ul {
       list-style-type: none;
       display: block;
-      li {
-         display: inline;
-         white-space: nowrap;
-         margin-right: 5px;
-      }
    }
    li {
-      float: left;
+      display: inline;
+      white-space: nowrap;
+      margin-right: 5px;
+      list-style-type: none;
       a { font-weight: bold; }
    }
 }
