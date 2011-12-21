@@ -1,0 +1,14 @@
+!!! Strict
+%html
+   %head
+      %title Bookweb
+      %meta{:"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}/
+      = stylesheet_link_tag    "application"
+      = javascript_include_tag "application"
+      = csrf_meta_tags
+   %body
+      = render "layouts/menu"
+      = render "layouts/notices"
+      .container
+         = yield
+      = render "layouts/footer"
