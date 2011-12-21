@@ -1,7 +1,8 @@
 %h1 Witaj na BookWeb :)
 %div{:class => "books_list"}
    %p
-      Poniżej znajduje się lista ostatnich trzydziestu pozycji.
+      Poniżej znajduje się lista książek. Jeżeli nie widzisz tam swojej książki, to
+      = link_to "dodaj ją!", new_book_path
    %p{:class => "pagination"}
       = page_entries_info @paginate, :html => false
    %p
