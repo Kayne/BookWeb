@@ -1,0 +1,17 @@
+%h2 Zmień swoje hasło
+
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+   = devise_error_messages!
+   = f.hidden_field :reset_password_token
+
+   %div
+      = f.label :password, "Nowe hasło"
+      %br
+      = f.password_filed :password
+   %div
+      = f.label :password_confirmation, "Potwierdź nowe hasło"
+      %br
+      = f.password_field :password
+   %div
+      = f.submit "Zmień hasło"
+= render :partial => "users/shared/links"

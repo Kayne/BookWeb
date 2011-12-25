@@ -1,0 +1,5 @@
+%p>
+   Witaj
+   = @resource.email
+%p Możesz potwierdzić swoje konto przy pomocy poniższego odnośnika:
+%p= link_to "Potwierdź moje konto", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
