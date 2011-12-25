@@ -1,5 +1,5 @@
 %h1 Witaj na BookWeb :)
-%div{:class => "books_list"}
+.books_list
    %p
       Poniżej znajduje się lista książek. Jeżeli nie widzisz tam swojej książki, to
       = link_to "dodaj ją!", new_book_path
@@ -12,7 +12,7 @@
       %br/
       %br/
       = will_paginate @paginate
-%div{:class => "search_form"}
+.search_form
    %p
       Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
       = search_form_for @query do |f|

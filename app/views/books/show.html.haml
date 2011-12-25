@@ -1,8 +1,8 @@
 %h1= @book.title
-%div{:class => "left_column"}
+.left_column
    %p
       = image_tag @book.photo.url(:medium)
-%div{:class => "right_column"}
+.right_column"}
    %p
       = @book.desc
       %br/
@@ -11,10 +11,10 @@
 %div{:style => "clear: both;"}
    = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
    #holders
-%br/
-%br/
-= link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
-%br/
-= link_to "Edytuj pozycję", edit_book_path
-%br/
-= link_to "Powrót", :back
+   %br/
+   %br/
+   = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
+   %br/
+   = link_to "Edytuj pozycję", edit_book_path
+   %br/
+   = link_to "Powrót", :back

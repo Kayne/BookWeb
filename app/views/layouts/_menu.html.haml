@@ -3,10 +3,9 @@
       - if !user_signed_in? then
          %span
             Jesteś nie zalogowany.
-            = link_to "Zaloguj się", new_user_session_path
-            ! Nie masz konta?
-            = link_to "Zarejestruj się", new_user_registration_path
-            !
+            = link_to "Zaloguj się!", new_user_session_path
+            Nie masz konta?
+            = link_to "Zarejestruj się!", new_user_registration_path
       - else
          %span
             Zalogowany jako
