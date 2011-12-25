@@ -37,8 +37,12 @@ a {
     font-size: 15px;
     a {
         color: $font-color;
+        transition: padding 0.2s ease-out;
+        -webkit-transition: padding 0.2s ease-out;
+        -moz-transition: padding 0.2s ease-out;
         &:hover {
             color: $a-hover-color;
+            padding: 0px 3px 0px 3px;
         }
     }
     .right {
