@@ -9,26 +9,26 @@
 
       %div
          = f.label :email
-         %br
+         %br/
          = f.email_field :email
       %div>
          = f.label :password, "Nowe hasło"
          %i (zostaw puste, jeśli nie chcesz zmieniać)
-         %br
+         %br/
          = f.password_field :password
       %div
          = f.label :password_confirmation, "Potwierdź hasło"
-         %br
+         %br/
          = f.password_field :password_confirmation
       %div>
          = f.label :current_password, "Aktualne hasło"
          %i (musisz wpisać, aby potwierdzić zmiany)
-         %br
+         %br/
          = f.password_field :current_password
       %div>
          = f.label :avatar, "Zdjęcie profilowe"
          %i (zostaw puste, jeśli nie chcesz zmieniać)
-         %br
+         %br/
          = f.file_field :avatar, :value => current_user.avatar.url
       %div
          = f.submit "Aktualizuj"
