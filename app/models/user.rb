@@ -8,13 +8,15 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  validates_presence_of :username, :email, :password
+  validates_presence_of :username, :email
 
   extend FriendlyId
   friendly_id :username
+  # Avatar by paperclip gem
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :avatar
 
   protected
 
