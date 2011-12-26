@@ -240,13 +240,10 @@ pl:
 
       full_messages:
         format: "%{attribute} %{message}"
-  will_paginate:
-    previous_label: "&#8592; Poprzednie"
-    next_label: "Następne &#8594;"
-    page_gap: "&hellip;"
-    page_entries_info:
-      multi_page: "Wyświetlanie %{from} z %{to} elementów z %{count}"
-      single_page:
-        zero: "Brak wyników"
-        one: "Jeden element"
-        other: "Wszystkie %{count} elementy"
+  views:
+    pagination:
+      first: "&laquo; Pierwsza strona"
+      last: "Ostatnia strona &raquo;"
+      previous: "&lsaquo; Poprzednie"
+      next: "Następne &rsaquo;"
+      truncate: "..."
