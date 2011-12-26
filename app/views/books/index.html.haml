@@ -11,7 +11,7 @@
             %li= link_to b.title, {:action => "show", :id => b.slug }
       %br/
       %br/
-      = will_paginate @paginate
+   %p= paginate @paginate
 .search_form
    %p
       Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
