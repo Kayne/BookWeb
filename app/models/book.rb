@@ -7,6 +7,8 @@ class Book < ActiveRecord::Base
   validates_length_of :title, :minimum => 4
   validates_length_of :author, :minimum => 4
 
+  attr_readonly :title
+
   # PaperClip gem for photos
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   # FriendlyId

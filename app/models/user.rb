@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :books, :through => :booksassigments
 
   attr_accessor :login
+  attr_readonly :username, :login
 
   validates_presence_of :username, :email
 
