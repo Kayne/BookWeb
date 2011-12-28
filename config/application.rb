@@ -46,6 +46,6 @@ module Bookweb
     config.assets.version = '1.0'
 
     # Caching engine
-    config.cache_store = :mem_cache_store
+    config.cache_store = :dalli_store, {:expires_in => 1.day}
   end
 end

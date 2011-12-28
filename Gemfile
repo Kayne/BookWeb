@@ -14,7 +14,7 @@ gem 'rails-i18n'
 gem 'kaminari'
 gem 'ransack'
 gem 'pg'
-gem 'memcache-client'
+gem 'dalli'
 gem 'thin'
 
 # Gems used only for assets and not required
