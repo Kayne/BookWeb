@@ -34,7 +34,7 @@
          = f.submit "Aktualizuj"
 
 .right_column
-   = image_tag current_user.avatar.url(:medium)
+   = link_to image_tag(current_user.avatar.url(:medium)), current_user.avatar.url, :rel => "lightbox"
    %h3 Usuń konto
    %p>
       Niezadowolony z serwisu?
