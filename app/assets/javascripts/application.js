@@ -7,4 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
+jQuery(document).ready(function($) {
+   $('a[rel*=lightbox]').lightBox({
+     txtImage: 'Zdjęcie',
+     txtOf: 'z'
+   }) 
+});
