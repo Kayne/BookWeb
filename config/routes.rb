@@ -15,7 +15,9 @@ Bookweb::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :books
+  resources :books do
+    get 'page/:page', :action => :index, :on => :collection
+  end
   resources :booksassigments
   # Sample resource route with options:
   #   resources :products do
