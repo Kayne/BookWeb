@@ -25,7 +25,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
   def add
   # Need authorization
-    if !@book = Book.find_with_id_and_slug(params[:id])
+    if !@book = Book.get_book_with_slug_only(params[:id])
       flash[:alert] = "Nie ma takiej pozycji! Może ją dodasZ?"
       redirect_to :action => "new"
     end
@@ -34,8 +34,8 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
       flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
     else
       @assigment = Booksassigment.new
-      @assigment.set_user_and_book_id(current_user.id, @book.id)
-      if @assigment.save
+      if @assigment.set_assigment_and_save(current_user.id, @book.id)
+      #if @assigment.save
         flash[:notice] = "Dodano"
       else
         flash[:alert] = "Nie udało się dodać pozycji"
@@ -58,8 +58,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
       if @book.save
         @booksassigment = Booksassigment.new
-        @booksassigment.set_user_and_book_id(current_user.id, @book.id)
-        @booksassigment.save
+        @booksassigment.set_assigment_and_save(current_user.id, @book.id)
         flash[:notice] = "Dodano."
 	    redirect_to(@book)
       else
@@ -68,14 +67,13 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
     else
     
-      @booksassigment = Booksassigment.get_first_book(current_user.id, @book.id)
+      @booksassigment = Booksassigment.get_user_book(current_user.id, @book.id)
       if @booksassigment != nil
         flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
         redirect_to(@book)
       else
         @booksassigment = Booksassigment.new
-        @booksassigment.set_user_and_book_id(current_user.id, @book.id)
-	    @booksassigment.save
+        @booksassigment.set_assigment_and_save(current_user.id, @book.id)
         flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
 	    redirect_to(@book)
       end
@@ -84,7 +82,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
   def destroy
   # Need authorization
-    @book = Booksassigment.where(:user_id => current_user.id, :book_id => params[:id]).first
+    @book = Booksassigment.get_user_book(current_user.id, params[:id])
     if @book.destroy
       flash[:notice] = "Usunięto tą pozycje z Twoich książek."
       redirect_to :back

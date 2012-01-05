@@ -21,7 +21,7 @@ class Book < ActiveRecord::Base
     desc.gsub(/\n/, '<br />').html_safe
   end
 
-  def self.find_with_id_and_slug(id)
+  def self.get_book_with_slug_only(id)
     find(id, :select => "id, slug")
   end
 end
