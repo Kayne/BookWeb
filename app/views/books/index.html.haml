@@ -4,7 +4,7 @@
       Poniżej znajduje się lista książek. Jeżeli nie widzisz tam swojej książki, to
       = link_to "dodaj ją!", new_book_path
    %p{:class => "pagination"}
-      = page_entries_info @paginate, :html => false
+      = page_entries_info(@paginate, :html => false).html_safe
    %p
       %ul
          - @paginate.each do |b|
