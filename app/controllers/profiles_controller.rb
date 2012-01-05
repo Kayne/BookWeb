@@ -2,7 +2,7 @@
 class ProfilesController < ApplicationController
 
   def index
-    @users = User.all(:order => 'id DESC', :limit => 30);
+    @paginate = User.order('id DESC').page(params[:page])
   end
 
   def show

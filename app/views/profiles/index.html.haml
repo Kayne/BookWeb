@@ -1,9 +1,13 @@
 %h1 Użytkownicy BookWeb
 %p
    Poniżej znajduje się lista zarejestrowanych użytkowników.
+%p{:class => "pagination"}
+   = page_entries_info(@paginate, :html => false).html_safe
+%p
    %ul
-      - @users.each do |u|
+      - @paginate.each do |u|
          %li= link_to u.username, {:action => "show", :id => u.username }
+%p= paginate @paginate
 %br/
 %br/
 = link_to "Powrót na stronę główną", :controller => "books"
