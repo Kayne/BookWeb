@@ -16,4 +16,8 @@ class Book < ActiveRecord::Base
   # FriendlyId
   extend FriendlyId
   friendly_id :title, :use => :slugged
+
+  def desc_html_safe
+    desc.gsub(/\n/, '<br />').html_safe
+  end
 end

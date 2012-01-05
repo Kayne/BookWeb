@@ -58,7 +58,8 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
       @book = Book.new(params[:book])
 
       if @book.save
-	    @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+        @booksassigment = Booksassigment.new
+        @booksassigment.set_user_and_book_id(current_user.id, @book.id)
 	    @booksassigment.save
         flash[:notice] = "Dodano."
 	    redirect_to(@book)
@@ -73,7 +74,8 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
         flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
         redirect_to(@book)
       else
-        @booksassigment = Booksassigment.new(:user_id => current_user.id, :book_id => @book.id)
+        @booksassigment = Booksassigment.new
+        @booksassigment.set_user_and_book_id(current_user.id, @book.id)
 	    @booksassigment.save
         flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
 	    redirect_to(@book)
