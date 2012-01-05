@@ -9,4 +9,8 @@ class Booksassigment < ActiveRecord::Base
     self.book_id = book_id
   end
 
+  def self.get_first_book(user_id, book_id)
+    where(:user_id => user_id, :book_id => book_id).first
+  end
+
 end

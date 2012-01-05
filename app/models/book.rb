@@ -20,4 +20,8 @@ class Book < ActiveRecord::Base
   def desc_html_safe
     desc.gsub(/\n/, '<br />').html_safe
   end
+
+  def self.find_with_id_and_slug(id)
+    find(id, :select => "id, slug")
+  end
 end

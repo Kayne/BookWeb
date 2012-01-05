@@ -4,8 +4,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
   def index
     @query = Book.search(params[:q])
-    @paginate = @query.result(:distinct => true)
-    @paginate = @paginate.page params[:page]
+    @paginate = @query.result(:distinct => true).page(params[:page])
   end
 
   def show
@@ -26,7 +25,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
   def add
   # Need authorization
-    if !@book = Book.find(params[:id], :select => "id, slug")
+    if !@book = Book.find_with_id_and_slug(params[:id])
       flash[:alert] = "Nie ma takiej pozycji! Może ją dodasZ?"
       redirect_to :action => "new"
     end
@@ -60,7 +59,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
       if @book.save
         @booksassigment = Booksassigment.new
         @booksassigment.set_user_and_book_id(current_user.id, @book.id)
-	    @booksassigment.save
+        @booksassigment.save
         flash[:notice] = "Dodano."
 	    redirect_to(@book)
       else
@@ -69,7 +68,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 
     else
     
-      @booksassigment = Booksassigment.where(:user_id => current_user.id, :book_id => @book.id).first
+      @booksassigment = Booksassigment.get_first_book(current_user.id, @book.id)
       if @booksassigment != nil
         flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
         redirect_to(@book)
