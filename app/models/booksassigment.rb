@@ -4,14 +4,11 @@ class Booksassigment < ActiveRecord::Base
 
   validates_presence_of :book_id, :user_id
 
+  attr_accessible :user_id, :book_id;
+
   def set_assigment(user_id, book_id)
     self.user_id = user_id
     self.book_id = book_id
-  end
-
-  def set_assigment_and_save(user_id, book_id)
-    set_assigment(user_id, book_id)
-    save
   end
 
   def self.get_user_book(user_id, book_id)

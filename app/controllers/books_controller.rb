@@ -33,10 +33,9 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
     if @booka != nil
       flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
     else
-      @assigment = Booksassigment.new
-      if @assigment.set_assigment_and_save(current_user.id, @book.id)
-      #if @assigment.save
-        flash[:notice] = "Dodano"
+      @assigment = Booksassigment.create(:user_id => current_user.id, :book_id => @book.id)
+      if @assigment.save
+        flash[:notice] = "Dodano pozycję do listy swoich pozycji"
       else
         flash[:alert] = "Nie udało się dodać pozycji"
       end
@@ -57,11 +56,17 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
       @book = Book.new(params[:book])
 
       if @book.save
-        @booksassigment = Booksassigment.new
-        @booksassigment.set_assigment_and_save(current_user.id, @book.id)
-        flash[:notice] = "Dodano."
-	    redirect_to(@book)
+        text = "Dodano książkę #{@book.title} do bazy danych."
+        @booksassigment = Booksassigment.create(:user_id => current_user.id, :book_id => @book.id)
+        if @booksassigment.save
+          flash[:notice] = text + " Dodano ją również do listy twoich książek."
+          redirect_to(@book)
+        else
+          flash[:notice] = text
+          flash[:alert] = "Nie udalo się dodać pozycji do listy posiadanych książek."
+        end
       else
+        flash[:alert] = "Nie udało się dodać książki #{@book.title} do bazy danych."
         render :action => "new"
       end
 
@@ -72,8 +77,8 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
         flash[:notice] = "Masz tą książkę dodaną do swoich pozycji."
         redirect_to(@book)
       else
-        @booksassigment = Booksassigment.new
-        @booksassigment.set_assigment_and_save(current_user.id, @book.id)
+        @booksassigment = Booksassigment.create(:user_id => current_user.id, :book_id => @book.id)
+        @booksassigment.save
         flash[:notice] = "Istnieje już taka książka. Dodano do spisu Twoich książek."
 	    redirect_to(@book)
       end
