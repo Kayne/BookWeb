@@ -5,7 +5,6 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
   def index
     @query = Book.search(params[:q])
     @paginate = @query.result(:distinct => true)
-    #@books = Book.all(:order => 'id DESC', :limit => 30);
     @paginate = @paginate.page params[:page]
   end
 
@@ -36,8 +35,7 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
       flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
     else
       @assigment = Booksassigment.new
-      @assigment.user_id = current_user.id
-      @assigment.book_id = @book.id
+      @assigment.set_user_and_book_id(current_user.id, @book.id)
       if @assigment.save
         flash[:notice] = "Dodano"
       else
