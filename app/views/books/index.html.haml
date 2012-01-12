@@ -8,7 +8,8 @@
    %p
       %ul{:style => "list-type: none; display: block;"}
          - @paginate.each do |b|
-            %li{:style => "list-type: none; display: block; display: inline; white-space: nowrap;"}= link_to image_tag(b.photo.url(:thumb)), {:action => "show", :id => b.slug }
+            %li{:style => "list-type: none; display: inline; white-space: nowrap;"}
+               = link_to image_tag(b.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.slug }
       %br/
       %br/
    %p= paginate @paginate
