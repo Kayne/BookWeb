@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
 
   attr_readonly :title
 
-  paginates_per 3
+  paginates_per 5
 
   # PaperClip gem for photos
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
