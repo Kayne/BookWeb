@@ -138,3 +138,12 @@ input:focus, textarea:focus {
         @include glowing_borders;
     }
 }
+
+.index_books_show {
+    list-type: none;
+    display: block;
+    .list {
+        display: inline; 
+        white-space: nowrap;
+    }
+}
