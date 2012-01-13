@@ -15,6 +15,7 @@
    %br/
    = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
    %br/
-   = link_to "Edytuj pozycję", edit_book_path
+   - if current_user.admin?
+      = link_to "Edytuj pozycję", edit_book_path
    %br/
    = link_to "Powrót", :back
