@@ -1,6 +1,7 @@
 # encoding: utf-8
 class BooksController < ApplicationController
 before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit, :update, :add]
+before_filter :only_admin!, :only => [:edit, :update]
 
   def index
     @query = Book.search(params[:q])
