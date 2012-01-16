@@ -87,14 +87,28 @@ before_filter :only_admin!, :only => [:edit, :update]
   end
 
   def destroy
-  # Need authorization
-    @book = Booksassigment.get_user_book(current_user.id, params[:id])
-    if @book.destroy
-      flash[:notice] = "Usunięto tą pozycje z Twoich książek."
-      redirect_to :back
+    if params[:complete] && current_user.admin?
+      @book = Book.find(params[:id])
+        booksassigment = Booksassigment.where(:book_id => @book.id)
+        booksassigment.each do |b|
+          b.destroy
+        end
+      if @book.destroy
+        flash[:notice] = "Usunięto książkę z bazy danych."
+        redirect_to books_path
+      else
+        flash[:alert] = "Nie udało się usunąć książki z bazy danych."
+        redirect_to books_path
+      end
     else
-      flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
-      redirect_to :back
+      @book = Booksassigment.get_user_book(current_user.id, params[:id])
+      if @book.destroy
+        flash[:notice] = "Usunięto tą pozycje z Twoich książek."
+        redirect_to :back
+      else
+        flash[:notice] = "Nie udało się usunąć tej pozycji! Zgłoś błąd administracji!"
+        redirect_to :back
+      end
     end
   end
 
