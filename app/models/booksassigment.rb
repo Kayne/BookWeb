@@ -16,7 +16,7 @@ class Booksassigment < ActiveRecord::Base
   end
 
   def self.new_assigment(user_id, book_id)
-    self.create(:user_id => current_user.id, :book_id => @book.id)
+    self.create(:user_id => user_id, :book_id => book_id)
   end
 
 end
