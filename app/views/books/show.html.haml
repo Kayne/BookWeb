@@ -11,11 +11,18 @@
 %div{:style => "clear: both;"}
    = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
    #holders
+   = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"
+   #opinions
+      - if not @opinions.nil?
+         - @opinions.each do |opinion|
+            %p
+               %strong= opinion.title
+               = opinion.text
    %br/
    %br/
    = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
    %br/
-   - if current_user.admin?
+   - if user_signed_in? and current_user.admin?
       = link_to "Edytuj pozycję", edit_book_path
       = link_to "Usuń pozycję", {:acttion => "destroy", :id => @book.slug, :complete => true}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycje całkowicie z bazy danych?", :method => :delete
    %br/
