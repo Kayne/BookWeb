@@ -8,4 +8,7 @@ class Opinion < ActiveRecord::Base
 
   paginates_per 5
 
+  def self.add_new_opinion(book_id, user_id, title, text)
+    self.create(:book_id => book_id, :user_id => user_id, :title => title, :text => text)
+  end
 end

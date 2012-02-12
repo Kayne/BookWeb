@@ -25,7 +25,7 @@ before_filter :only_admin!, :only => [:edit, :update]
 
   def opinion_add
     if not params[:opinion].nil? or not params[:opinion].empty?
-      Opinion.create(:book_id => params[:opinion][:book_id], :user_id => current_user.id, :title => params[:opinion][:title], :text => params[:opinion][:text])
+      Opinion.add_new_opinion(params[:opinion][:book_id], current_user.id, params[:opinion][:title], params[:opinion][:text])
       flash[:notice] = "Dodano opinię."
       redirect_to book_path(params[:opinion][:book_id])
     end
@@ -39,7 +39,7 @@ before_filter :only_admin!, :only => [:edit, :update]
   def add
   # Need authorization
     if !@book = Book.get_book_with_slug_only(params[:id])
-      flash[:alert] = "Nie ma takiej pozycji! Może ją dodasZ?"
+      flash[:alert] = "Nie ma takiej pozycji! Może ją dodasz?"
       redirect_to :action => "new"
     end
     @booka = Booksassigment.find_by_book_id(@book.id)
