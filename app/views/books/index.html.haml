@@ -5,11 +5,17 @@
       = link_to "dodaj ją!", new_book_path
    %p{:class => "pagination"}
       = my_page_entries_info(@paginate, {:entry_name_single => "książke", :entry_name_plural => "książek", :entry_name_few => "książki"} ).html_safe
-   %p
-      %ul{:class => "index_books_show"}
-         - @paginate.each do |b|
-            %li{:class => "list"}
-               = link_to image_tag(b.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.slug }
+   %div
+      - count = 0
+      - @paginate.each do |b|
+         - count = count + 1
+         - if count > 5
+            %div{:style => "clear: both;"}
+            - count = 0
+         %div{:style => "width: 115px; float: left; margin-right: 1px;"}
+            %strong= b.title
+            %br/
+            = link_to image_tag(b.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.slug }
       %br/
       %br/
    %p= paginate @paginate
