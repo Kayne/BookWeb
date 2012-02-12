@@ -95,10 +95,8 @@ a {
 }
 
 // Forms
-input, textarea, select, {
+input, textarea, select {
     display: inline-block;
-    width: 210px;
-    height: 18px;
     padding: 4px;
     line-height: 18px;
     color: #808080;
@@ -106,7 +104,11 @@ input, textarea, select, {
     border: 1px solid #ccc;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-radius:3px
+    border-radius: 3px;
+    input, select {
+        width: 210px;
+        height: 18px;
+    }
 }
 
 input[type="checkbox"] {
