@@ -9,6 +9,8 @@
          - count = 0
       %div{:class => "books_show"}
          %strong= link_to b.book.title, :action => "show", :id => b.book.slug
+         %br/
+         %span{:style => "font-style: italic;"} Posiadasz od #{you_have_since(b.created_at)}.
          = link_to "[X]", {:action => 'destroy', :id => b.book.id}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycję z swoich książek?", :method => :delete, :style => "text-decoration: none;", :alt => "Usuń tą pozycję", :title => "Usuń pozycję"
          %br/
          = link_to image_tag(b.book.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.book.slug }
