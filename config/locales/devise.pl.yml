@@ -35,13 +35,11 @@ pl:
       confirmed: 'Twoje konto zostało aktywowane. Zalogowano.'
     registrations:
       signed_up: 'Witaj! Zalogowano poprawnie.'
-      inactive_signed_up: 'Zarejestrowano poprawnie. Jednak, nie można automatycznie zalogować, ponieważ konto jest %{reason}.'
       updated: 'Zaktualizowano konto.'
       destroyed: 'Żegnaj! Twoje konto zostało usunięte. Mamy nadzieję, że wkrótce do nas wrócisz!'
-      reasons:
-        inactive: 'nieaktywne'
-        unconfirmed: 'nieaktywowane'
-        locked: 'zablokowane'
+      signed_up_but_unconfirmed: 'Wiadomość z linkiem aktywacyjnym została wysłana na podany adres e-amil. Skorzystaj z niego by aktywować konto.'
+      signed_up_but_inactive: 'Zarejestrowałeś się poprawnie, jednakże, nie możesz się zalogować, ponieważ Twoje konto jest nieaktywne.'
+      signed_up_but_locked: 'Zarejestrowałeś się poprawnie, jednakże, nie możesz się zalogować, bo Twoje konto jest zablokowane.'
     unlocks:
       send_instructions: 'Otrzymasz adres e-mail z instrukcją jak odblokować swoje konto w przeciągu kilku minut.'
       unlocked: 'Twoje konto zostało odblokowane. Zalogowano.'
