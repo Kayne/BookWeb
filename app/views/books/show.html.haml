@@ -9,19 +9,21 @@
       %br/
       %i= @book.author
 %div{:style => "clear: both;"}
-   %p
-      = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
+   %p{:style => "text-align: center;"}
+      = link_to "Pokaż użytkowników, posiadających tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
       |
       = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"
    #holders
    #opinions
-   %br/
-   %br/
-   = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
+   - if @assigment.nil?
+      = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
    %br/
    - if user_signed_in? and current_user.admin?
+      %strong Opcje administratora:
       = link_to "Edytuj pozycję", edit_book_path
+      |
       = link_to "Usuń pozycję", {:acttion => "destroy", :id => @book.slug, :complete => true}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycje całkowicie z bazy danych?", :method => :delete
+   - if user_signed_in?
       %div{:style => "overflow: hidden;"}
          = form_for Opinion.new, :url => '/books/opinion_add' do |f|
             %p{:class => "form"}

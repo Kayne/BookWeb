@@ -11,6 +11,9 @@ before_filter :only_admin!, :only => [:edit, :update]
   def show
   # Need authorization
     @book = Book.find(params[:id])
+    if user_signed_in?
+      @assigment = Booksassigment.find_by_book_id_and_user_id(@book.id, current_user.id)
+    end
   end
 
   def holders
