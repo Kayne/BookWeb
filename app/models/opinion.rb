@@ -1,6 +1,6 @@
 class Opinion < ActiveRecord::Base
-  has_many :books
-  has_many :users
+  belongs_to :book
+  belongs_to :user
 
   validates_presence_of :title, :text
   validates_length_of :title, :minimum => 4

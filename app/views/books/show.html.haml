@@ -9,15 +9,12 @@
       %br/
       %i= @book.author
 %div{:style => "clear: both;"}
-   = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
+   %p
+      = link_to "Pokaż użytkowników, którzy posiadają tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
+      |
+      = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"
    #holders
-   = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"
    #opinions
-      - if not @opinions.nil?
-         - @opinions.each do |opinion|
-            %p
-               %strong= opinion.title
-               = opinion.text
    %br/
    %br/
    = link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug

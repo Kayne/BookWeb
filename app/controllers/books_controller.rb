@@ -11,12 +11,15 @@ before_filter :only_admin!, :only => [:edit, :update]
   def show
   # Need authorization
     @book = Book.find(params[:id])
-    @assigments = Booksassigment.find_all_by_book_id(@book.id)
-    @opinions = Opinion.where(:book_id => @book.id)
   end
 
   def holders
     @assigments = Booksassigment.find_all_by_book_id(params[:id])
+    render(:layout => false)
+  end
+
+  def opinions
+    @opinions = Opinion.where(:book_id => params[:id]).includes(:user)
     render(:layout => false)
   end
 
