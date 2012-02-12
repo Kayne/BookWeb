@@ -1,6 +1,6 @@
 %h1= @user.username
-%p Zarejestrowany od #{on_bookweb_since(current_user.created_at)} dni. Posiada w biblioteczce #{@assigments.count} pozycji.
-%p Posiada książki:
+%p Zarejestrowany od #{on_bookweb_since(@user.created_at)} dni. Posiada w biblioteczce #{@assigments.count} pozycji.
+%p Książki należącego do tego użytkownika:
 %div
    - count = 0
    - @assigments.each do |a|
