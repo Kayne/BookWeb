@@ -1,19 +1,19 @@
 %p
    %strong Opinie o tej książce
 - if not @opinions.nil? and not @opinions.empty?
-   %table
+   %table{:style => "margin: 0 auto; width: 865px;"}
       %thead
          %tr
-            %th{:scope => "cols", :style => "width: 200px"} Autor
-            %th{:scope => "cols", :style => "width: 150px;"} Data
-            %th{:scope => "cols", :style => "width: 150px;"} Tytuł
-            %th{:scope => "cols", :style => "width: 300px;"} Treść
+            %th{:scope => "cols", :style => "width: 165px"} Autor
+            %th{:scope => "cols", :style => "width: 165px;"} Data
+            %th{:scope => "cols", :style => "width: 165px;"} Tytuł
+            %th{:scope => "cols", :style => "width: 400px;"} Treść
       %tbody
          - @opinions.each do |opinion|
             %tr
-               %td= opinion.user.username
-               %td= human_date(opinion.created_at)
-               %td= opinion.title
+               %td{:style => "text-align: center;"}= opinion.user.username
+               %td{:style => "text-align: center;"}= human_date(opinion.created_at)
+               %td{:style => "text-align: center;"}= opinion.title
                %td= markdown(opinion.text)
 - else
    %p Nie dodano jeszcze żadnych opini.
