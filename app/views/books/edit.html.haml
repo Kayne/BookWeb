@@ -4,16 +4,17 @@
    = form_for(@book, :html => { :multipart => true }) do |f|
       %p
          %h2= @book.title
-      %p
+      %p{:class => "form"}
          = f.label :desc, "Opis książki"
          = f.text_area :desc, :value => @book.desc
-      %p
+      %p{:class => "form"}
          = f.label :author, "Autor książki"
          = f.text_field :author, :value => @book.author
-      %p
+      %p{:class => "form"}
          = f.label :photo, "Zdjęcie"
          = f.file_field :photo, :value => @book.photo.url
          %i (Zdjęcie nie jest obowiązkowe!)
-      %p
+      %p{:class => "form"}
          = f.submit "Edytuj pozycję"
+%div{:style => "clear: both;"}
 %p= link_to 'Wróć', book_path(@book)
