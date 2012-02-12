@@ -2,11 +2,18 @@
 %p
    Poniżej znajduje się lista zarejestrowanych użytkowników.
 %p{:class => "pagination"}
-   = page_entries_info(@paginate, :html => false).html_safe
-%p
-   %ul
-      - @paginate.each do |u|
-         %li= link_to u.username, {:action => "show", :id => u.username }
+   = my_page_entries_info(@paginate, {:entry_name_single => "użytkownika", :entry_name_plural => "użytkowników", :entry_name_few => "użytkowników"} ).html_safe
+%div
+   - count = 0
+   - @paginate.each do |u|
+      - count = count + 1
+      - if count > 8
+         %div{:style => "clear: both;"}
+         - count = 0
+      %div{:class => "books_show"}
+         %strong= link_to u.username, {:action => "show", :id => u.username }
+         = link_to image_tag(u.avatar.url(:thumb), :class => "glow"), {:action => "show", :id => u.username }
+   %div{:style => "clear: both;"}
 %p= paginate @paginate
 %br/
 %br/
