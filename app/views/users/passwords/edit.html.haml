@@ -4,14 +4,13 @@
    = devise_error_messages!
    = f.hidden_field :reset_password_token
 
-   %div
+   %div{:class => "form"}
       = f.label :password, "Nowe hasło"
-      %br/
       = f.password_filed :password
-   %div
+   %div{:class => "form"}
       = f.label :password_confirmation, "Potwierdź nowe hasło"
-      %br/
       = f.password_field :password
-   %div
+   %div{:class => "form"}
       = f.submit "Zmień hasło"
+%div{:style => "clear: both;"}
 = render :partial => "users/shared/links"

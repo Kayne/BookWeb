@@ -1,18 +1,17 @@
 %h2 Zaloguj się
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-   %div
-      = f.label :login
-      %br/
+   %div{:class => "form"}
+      = f.label :login, "Login lub e-mail"
       = f.text_field :login
-   %div
+   %div{:class => "form"}
       = f.label :password, "Hasło"
-      %br/
       = f.password_field :password
    - if devise_mapping.rememberable?
-      %div>
-         = f.check_box :remember_me
+      %div{:class => "form"}>
+         = f.check_box :remember_me, :style => "margin-left: 150px; margin-right: 5px;"
          = f.label :remember_me, "Zapamiętaj mnie"
-   %div
+   %div{:class => "form"}
       = f.submit "Zaloguj"
+%div{:style => "clear: both;"}
 = render :partial => "users/shared/links"

@@ -2,11 +2,10 @@
 = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
    = devise_error_messages!
    
-   %div
+   %div{:class => "form"}
       = f.label :email
-      %br/
       = f.email_field :email
-      %br/
-   %div
+   %div{:class => "form"}
       = f.submit "Wyślij instrukcję przywracania hasła"
+%div{:style => "clear: both;"}
 = render :partial => "users/shared/links"

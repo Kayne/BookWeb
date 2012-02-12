@@ -1,11 +1,10 @@
 %h2 Ponownie wyślij instrukcje aktywacji
 = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
    = devise_error_messages!
-   %div
+   %div{:class => "form"}
       = f.label :email
-      %br/
       = f.email_field :email
-      %br/
-   %div
+   %div{:class => "form"}
       = f.submit "Ponownie wyślij instrukcję aktywacji"
+%div{:style => "cler: both;"}
 = render :partial => "users/shared/links"
