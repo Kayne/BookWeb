@@ -25,13 +25,7 @@
       Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!
       = search_form_for @query do |f|
          %p
-            = f.label :title_cont
-            = f.text_field :title_cont
-         %p
-            = f.label :desc_cont
-            = f.text_field :desc_cont
-         %p
-            = f.label :author_cont
-            = f.text_field :author_cont
+            = f.label :title_or_desc_or_author_cont, "Wpisz fragment tytułu, opisu lub autora", :style => "width: 260px;"
+            = f.text_field :title_or_desc_or_author_cont
          %p
             = f.submit
