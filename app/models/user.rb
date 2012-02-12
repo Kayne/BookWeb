@@ -19,6 +19,16 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me, :avatar, :admin
 
+  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+
+  def online?
+    updated_at > 10.minutes.ago
+  end
+
+  def self.online_list(id)
+    self.online.select('username').where("id != ?", id)
+  end
+
   protected
 
   def self.find_for_authentication(conditions)

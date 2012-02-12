@@ -15,4 +15,8 @@ class Booksassigment < ActiveRecord::Base
     where(:user_id => user_id, :book_id => book_id).first
   end
 
+  def self.new_assigment(user_id, book_id)
+    self.create(:user_id => current_user.id, :book_id => @book.id)
+  end
+
 end

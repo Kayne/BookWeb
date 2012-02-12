@@ -46,8 +46,7 @@ before_filter :only_admin!, :only => [:edit, :update]
     if @booka != nil
       flash[:alert] = "Masz już tą książkę dodaną do swoich pozycji!"
     else
-      @assigment = Booksassigment.create(:user_id => current_user.id, :book_id => @book.id)
-      if @assigment.save
+      if Booksassigment.new_assigment(current_user.id, @book.id)
         flash[:notice] = "Dodano pozycję do listy swoich pozycji"
       else
         flash[:alert] = "Nie udało się dodać pozycji"
@@ -77,6 +76,7 @@ before_filter :only_admin!, :only => [:edit, :update]
         else
           flash[:notice] = text
           flash[:alert] = "Nie udalo się dodać pozycji do listy posiadanych książek."
+          redirect_to(@book)
         end
       else
         flash[:alert] = "Nie udało się dodać książki #{@book.title} do bazy danych."
