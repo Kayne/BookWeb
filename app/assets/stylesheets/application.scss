@@ -139,11 +139,9 @@ input:focus, textarea:focus {
     }
 }
 
-.index_books_show {
-    list-type: none;
-    display: block;
-    .list {
-        display: inline; 
-        white-space: nowrap;
-    }
+.books_show {
+    width: 115px;
+    float: left;
+    margin-right: 1px;
+    text-align: center;
 }

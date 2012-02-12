@@ -1,8 +1,16 @@
 %h1= @user.username
 %p Posiada książki:
-%ul
+%div
+   - count = 0
    - @assigments.each do |a|
-      %li= link_to a.book.title, :controller => "/books", :action => "show", :id => a.book.slug
+      - count = count + 1
+      - if count > 5
+         %div{:style => "clear: both;"}
+         - count = 0
+      %div{:class => "books_show"}
+         %strong= a.book.title
+         = link_to image_tag(a.book.photo.url(:thumb), :class => "glow"), :controller => "/books", :action => "show", :id => a.book.slug
+   %div{:style => "clear: both;"}
 %br/
 %br/
 = link_to "Powrót do listy użytkowników", {:action => "index"}

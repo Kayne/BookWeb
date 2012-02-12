@@ -12,10 +12,11 @@
          - if count > 5
             %div{:style => "clear: both;"}
             - count = 0
-         %div{:style => "width: 115px; float: left; margin-right: 1px;"}
+         %div{:class => "books_show"}
             %strong= b.title
             %br/
             = link_to image_tag(b.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.slug }
+      %div{:style => "clear: both;"}
       %br/
       %br/
    %p= paginate @paginate
