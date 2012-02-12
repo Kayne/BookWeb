@@ -7,11 +7,12 @@
    - count = 0
    - @paginate.each do |u|
       - count = count + 1
-      - if count > 8
+      - if count > 4
          %div{:style => "clear: both;"}
          - count = 0
       %div{:class => "books_show"}
          %strong= link_to u.username, {:action => "show", :id => u.username }
+         %br/
          = link_to image_tag(u.avatar.url(:thumb), :class => "glow"), {:action => "show", :id => u.username }
    %div{:style => "clear: both;"}
 %p= paginate @paginate

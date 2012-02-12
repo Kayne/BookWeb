@@ -5,11 +5,12 @@
    - count = 0
    - @assigments.each do |a|
       - count = count + 1
-      - if count > 8
+      - if count > 4
          %div{:style => "clear: both;"}
          - count = 0
       %div{:class => "books_show"}
          %strong= a.book.title
+         %br/
          = link_to image_tag(a.book.photo.url(:thumb), :class => "glow"), :controller => "/books", :action => "show", :id => a.book.slug
    %div{:style => "clear: both;"}
 %br/
