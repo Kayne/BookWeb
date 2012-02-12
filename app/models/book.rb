@@ -17,10 +17,6 @@ class Book < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  def desc_html_safe
-    desc.gsub(/\n/, '<br />').html_safe
-  end
-
   def self.get_book_with_slug_only(id)
     find(id, :select => "id, slug")
   end

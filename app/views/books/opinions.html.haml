@@ -9,6 +9,6 @@
          przez
          %strong= opinion.user.username
       %p
-         = opinion.text
+         = markdown(opinion.text)
 - else
    %p Nie dodano jeszcze żadnych opini.

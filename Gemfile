@@ -16,7 +16,7 @@ gem 'ransack'
 gem 'pg'
 gem 'dalli'
 gem 'thin'
-gem 'bb-ruby'
+gem 'formatize'
 
 # Gems used only for assets and not required
 # in production environments by default.
