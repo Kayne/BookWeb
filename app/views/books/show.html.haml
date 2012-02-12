@@ -22,15 +22,16 @@
    - if user_signed_in? and current_user.admin?
       = link_to "Edytuj pozycję", edit_book_path
       = link_to "Usuń pozycję", {:acttion => "destroy", :id => @book.slug, :complete => true}, :confirm => "Jesteś pewien, że chcesz usunąć tą pozycje całkowicie z bazy danych?", :method => :delete
-      = form_for Opinion.new, :url => '/books/opinion_add' do |f|
-         %p
-            = f.hidden_field :book_id, :value => @book.id
-         %p
-            = f.label :title, "Tytuł opinii"
-            = f.text_field :title
-         %p
-            = f.text_field :text
-         %p
-            = f.submit "Dodaj opinię"
+      %div{:style => "overflow: hidden;"}
+         = form_for Opinion.new, :url => '/books/opinion_add' do |f|
+            %p{:class => "form"}
+               = f.hidden_field :book_id, :value => @book.id
+            %p{:class => "form"}
+               = f.label :title, "Tytuł opinii"
+               = f.text_field :title
+            %p{:class => "form"}
+               = f.text_area :text, :rows => 10, :cols => 80
+            %p{:class => "form"}
+               = f.submit "Dodaj opinię"
    %br/
    = link_to "Powrót", :back

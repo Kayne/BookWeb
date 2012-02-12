@@ -1,23 +1,23 @@
 %h1 Dodaj nową książkę
-%p
+%div{:style => "overflow: hidden;"}
    Możesz użyć poniższego formularza by dodać nową książkę.
    = form_for(@book, :html => { :multipart => true }) do |f|
       - if @book.errors.any?
          - @book.errors.full_messages.each do |msg|
             %li= msg
-      %p
+      %p{:class => "form"}
          = f.label :title, "Tytuł książki"
          = f.text_field :title
-      %p
+      %p{:class => "form"}
          = f.label :desc, "Opis książki"
-         = f.text_area :desc
-      %p
+         = f.text_area :desc, :cols => 80
+      %p{:class => "form"}
          = f.label :author, "Autor książki"
          = f.text_field :author
-      %p
+      %p{:class => "form"}
          = f.label :photo, "Zdjęcie"
          = f.file_field :photo
          %i (Zdjęcie nie jest obowiązkowe!)
-      %p
+      %p{:class => "form"}
          = f.submit "Dodaj pozycję"
 %p= link_to 'Wróć', books_path
