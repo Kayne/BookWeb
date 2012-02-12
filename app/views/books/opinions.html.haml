@@ -1,0 +1,14 @@
+%p
+   %strong Opinie o tej książce
+- if not @opinions.nil? and not @opinions.empty?
+   - @opinions.each do |opinion|
+      %p
+         %strong= opinion.title
+         napisane
+         %span{:style => "font-style: italic;"}= human_date(opinion.created_at)
+         przez
+         %strong= opinion.user.username
+      %p
+         = opinion.text
+- else
+   %p Nie dodano jeszcze żadnych opini.
