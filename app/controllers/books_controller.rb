@@ -23,6 +23,14 @@ before_filter :only_admin!, :only => [:edit, :update]
     render(:layout => false)
   end
 
+  def opinion_add
+    if not params[:opinion].nil? or not params[:opinion].empty?
+      Opinion.create(:book_id => params[:opinion][:book_id], :user_id => current_user.id, :title => params[:opinion][:title], :text => params[:opinion][:text])
+      flash[:notice] = "Dodano opinię."
+      redirect_to book_path(params[:opinion][:book_id])
+    end
+  end
+
   def my
   # Need authorization
     @books = Booksassigment.find_all_by_user_id(current_user.id, :include => :book)
