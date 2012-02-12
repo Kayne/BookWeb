@@ -161,3 +161,16 @@ input:focus, textarea:focus {
 .form {
     clear: both;
 }
+
+table {
+    border:1px solid #ddd;
+    border-collapse:separate;
+    border-radius: 4px;
+    border-spacing: 0;
+    th, tr, td {
+        border-right: 1px solid #ddd;
+    }
+    tr, td {
+        border-top: 1px solid #ddd;
+    }
+}
