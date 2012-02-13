@@ -1,25 +1,25 @@
 %h1 Dodaj nową książkę
 %div{:style => "overflow: hidden;"}
-   Możesz użyć poniższego formularza by dodać nową książkę.
+   Możesz użyć poniższego formularza by dodać nową książkę. Upewniłeś się, że nie istnieje już taka pozycja? Powtarzające się pozycje będą usuwane. Wszystkie pozycje z wyjątkiem zdjęcia, są obowiązkowe.
    = form_for(@book, :html => { :multipart => true }) do |f|
       - if @book.errors.any?
          %ul{:class => "alert"}
             - @book.errors.full_messages.each do |msg|
                %li{:style => "list-style-type: none;"}= msg
       %p{:class => "form"}
-         = f.label :title, "Tytuł książki"
+         = f.label :title, "Pełny tytuł"
          = f.text_field :title
       %p{:class => "form"}
-         = f.label :desc, "Opis książki"
+         = f.label :desc, "Opis pozycji"
          = f.text_area :desc, :cols => 80
       %p{:class => "form"}
-         = f.label :author, "Autor książki"
+         = f.label :author, "Autor lub autorzy"
          = f.text_field :author
       %p{:class => "form"}
-         = f.label :photo, "Zdjęcie"
+         = f.label :photo, "Zdjęcie (np. okładka)"
          = f.file_field :photo
-         %i (Zdjęcie nie jest obowiązkowe!)
+         %small{:style => "font-style: italic;"} (Pole nie obowiązkowe!)
       %p{:class => "form"}
          = f.submit "Dodaj pozycję"
-%div{:style => "clear: both;"}
+= clear_both
 %p= link_to 'Wróć', books_path
