@@ -13,4 +13,13 @@ module BookHelper
     end
   end
 
+
+  def rate_for_this_book(rate, all_rates)
+    if all_rates <= 0
+      "Brak"
+    else
+      "#{number_with_precision(rate, :precision => 2, :separator => '.')} na 6 (#{all_rates} opinii)"
+    end
+  end
+
 end

@@ -10,7 +10,7 @@
 %div{:style => "clear: both;"}
    %p{:style => "text-align: center;"}
       %strong Ocena książki:
-      #{number_with_precision(@rate, :precision => 2, :separator => '.')} na 6 (#{@all_rates} opinii)
+      = rate_for_this_book(@rate, @all_rates)
       %br/
       = link_to "Pokaż użytkowników, posiadających tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
       |
