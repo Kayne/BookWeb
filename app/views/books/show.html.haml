@@ -18,7 +18,7 @@
       = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"
    #holders
    #opinions
-   - if @assigment.nil?
+   - if @assigment.nil? and user_signed_in?
       %p= link_to "Dodaj pozycję do swoich książek", :action => "add", :id => @book.slug
    - if user_signed_in? and not @opinion_added
       %div{:style => "overflow: hidden;"}
