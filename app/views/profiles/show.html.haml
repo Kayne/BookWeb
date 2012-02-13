@@ -13,4 +13,6 @@
          %br/
          = link_to image_tag(a.book.photo.url(:thumb), :class => "glow"), :controller => "/books", :action => "show", :id => a.book.slug
    %div{:style => "clear: both;"}
+      = link_to "Pokaż wszystkie opinie tego użytkownika", {:action => "opinions", :id => @user.id}, :remote => true, :"data-update" => "opinions"
+      #opinions
 = link_to "Powrót do listy użytkowników", {:action => "index"}

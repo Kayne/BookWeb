@@ -14,4 +14,9 @@ class ProfilesController < ApplicationController
     @opinions = Opinion.where(:user_id => @user.id).order('created_at DESC')
   end
 
+  def opinions
+    @opinions = Opinion.where(:user_id => params[:id]).includes(:book)
+    render(:layout => false)
+  end
+
 end

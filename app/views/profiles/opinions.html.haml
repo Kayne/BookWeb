@@ -1,0 +1,20 @@
+- if not @opinions.nil? and not @opinions.empty?
+   %table{:style => "margin: 15px auto; width: 865px;"}
+      %thead
+         %tr
+            %th{:scope => "cols", :style => "width: 165px"} Książka
+            %th{:scope => "cols", :style => "width: 165px"} Dodano
+            %th{:scope => "cols", :style => "width: 480px"} Opinia
+            %th{:scope => "cols", :style => "width: 50px"} Ocena
+      %tbody
+         - @opinions.each do |opinion|
+            %tr
+               %td{:style => "text-align: center;"}= link_to opinion.book.title, book_path(opinion.book)
+               %td{:style => "text-align: center;"}= human_date(opinion.created_at)
+               %td
+                  %p
+                     %strong{:style => "text-align: center;"}= opinion.title
+                     = markdown(opinion.text)
+               %td{:style => "text-align: center;"}= "#{opinion.rate}/6"
+- else
+   %p{:styke => "margin-top: 15px;"} Ten użytkownik nie dodał jeszcze żadnych opini!
