@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @assigments = Booksassigment.order('created_at').find_all_by_user_id(@user.id)
+    @opinions = Opinion.where(:user_id => @user.id).order('created_at DESC')
   end
 
 end

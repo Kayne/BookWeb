@@ -1,5 +1,5 @@
 %h1= @user.username
-%p Zarejestrowany od #{on_bookweb_since(@user.created_at)} dni. Posiada w biblioteczce #{@assigments.count} pozycji.
+%p Zarejestrowany od #{on_bookweb_since(@user.created_at)} dni. Posiada w biblioteczce #{@assigments.count} pozycji oraz ocenił #{@opinions.count} książek.
 %p Książki należącego do tego użytkownika:
 %div
    - count = 0
@@ -13,6 +13,4 @@
          %br/
          = link_to image_tag(a.book.photo.url(:thumb), :class => "glow"), :controller => "/books", :action => "show", :id => a.book.slug
    %div{:style => "clear: both;"}
-%br/
-%br/
 = link_to "Powrót do listy użytkowników", {:action => "index"}
