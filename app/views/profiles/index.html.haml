@@ -21,9 +21,10 @@
    %br/
    = link_to "Powrót na stronę główną", :controller => "books"
 .search_form
-   %p 
-      Ostatnio aktywni użytkownicy
-      - if not @onlines.nil? or not @onlines.empty?
+   %h3 Ostatnio aktywni użytkownicy
+   %p
+      %br/
+      - if not @onlines.nil? and not @onlines.empty?
          %ul
             - @onlines.each do |online|
                %li= link_to online.username, {:action => "show", :id => online.username}
