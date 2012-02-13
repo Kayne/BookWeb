@@ -23,7 +23,9 @@
 .search_form
    %p 
       Ostatnio aktywni użytkownicy
-      - id = 0
-      - id = current_user.id if user_signed_in?
-      - User.online_list(id).to_a.each do |u|
-         %li= link_to u.username, {:action => "show", :id => u.username}
+      - if not @onlines.nil? or not @onlines.empty?
+         %ul
+            - @onlines.each do |online|
+               %li= link_to online.username, {:action => "show", :id => online.username}
+      - else
+         Nie było żadnych aktywnych użytkowników w przeciągu ostatnich 10 minut...
