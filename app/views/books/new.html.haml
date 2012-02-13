@@ -3,8 +3,9 @@
    Możesz użyć poniższego formularza by dodać nową książkę.
    = form_for(@book, :html => { :multipart => true }) do |f|
       - if @book.errors.any?
-         - @book.errors.full_messages.each do |msg|
-            %li= msg
+         %ul{:class => "alert"}
+            - @book.errors.full_messages.each do |msg|
+               %li{:style => "list-style-type: none;"}= msg
       %p{:class => "form"}
          = f.label :title, "Tytuł książki"
          = f.text_field :title
