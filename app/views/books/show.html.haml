@@ -1,13 +1,12 @@
 %h1= @book.title
+%span{:style => "text-align: center;"}
+   %i= @book.author
 .left_column
    %p
       = link_to image_tag(@book.photo.url(:medium)), @book.photo.url, :rel => "lightbox"
 .right_column
    %p
       = markdown(@book.desc)
-      %br/
-      %br/
-      %i= @book.author
 %div{:style => "clear: both;"}
    %p{:style => "text-align: center;"}
       = link_to "Pokaż użytkowników, posiadających tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
