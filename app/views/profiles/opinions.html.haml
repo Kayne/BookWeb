@@ -12,8 +12,9 @@
                %td{:style => "text-align: center;"}= link_to opinion.book.title, book_path(opinion.book)
                %td{:style => "text-align: center;"}= human_date(opinion.created_at)
                %td
+                  %p{:style => "text-align: center;"}
+                     %strong= opinion.title
                   %p
-                     %strong{:style => "text-align: center;"}= opinion.title
                      = markdown(opinion.text)
                %td{:style => "text-align: center;"}= "#{opinion.rate}/6"
 - else
