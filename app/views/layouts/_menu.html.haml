@@ -3,12 +3,12 @@
       %p
          = link_to "Strona główna", books_path
          |
-         = link_to "Profile użytkowników", :controller => "/profiles"
+         = link_to "Użytkownicy", :controller => "/profiles"
          - if user_signed_in? then
             |
             = link_to "Mój profil", :controller => "/profiles", :action => "show", :id => current_user.username
             |
-            = link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my"
+            = link_to "Moje pozycje", :controller => "/books", :action => "my"
             |
             = link_to "Dodaj nową książkę", new_book_path
    %div{:class => "right"}
