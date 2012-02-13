@@ -10,6 +10,7 @@
       %div{:class => "form"}
          = f.label :email
          = f.email_field :email
+      %div{:class => "form hr"}
       %div{:class => "form"}>
          = f.label :password, "Nowe hasło"
          %small{:style => "font-style: italic;"} (zostaw puste, jeśli nie chcesz zmieniać)
@@ -17,14 +18,17 @@
       %div{:class => "form"}
          = f.label :password_confirmation, "Potwierdź hasło"
          = f.password_field :password_confirmation
-      %div{:class => "form"}>
-         = f.label :current_password, "Aktualne hasło"
-         %small{:style => "font-style: italic;"} (musisz wpisać, aby potwierdzić zmiany)
-         = f.password_field :current_password
+      %div{:class => "form hr"}
       %div{:class => "form"}>
          = f.label :avatar, "Zdjęcie profilowe"
          %small{:style => "font-style: italic;"} (zostaw puste, jeśli nie chcesz zmieniać)
          = f.file_field :avatar, :value => current_user.avatar.url
+      %div{:class => "form hr"}
+      %div{:class => "form"}>
+         = f.label :current_password, "Aktualne hasło"
+         %small{:style => "font-style: italic;"} (musisz wpisać, aby potwierdzić zmiany)
+         = f.password_field :current_password
+      %div{:class => "form hr"}
       %div{:class => "form"}
          = f.submit "Aktualizuj"
    %div{:style => "clear: both;"}

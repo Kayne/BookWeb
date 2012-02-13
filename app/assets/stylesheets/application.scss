@@ -176,3 +176,10 @@ table {
         border-top: 1px solid #ddd;
     }
 }
+
+.hr {
+    margin: 0 auto;
+    height: 10px;
+    background: transparent image-url('hr.png') no-repeat 0 bottom;
+    background-size: 100% 10px;
+}
