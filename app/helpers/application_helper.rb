@@ -25,4 +25,8 @@ module ApplicationHelper
   def human_date(date)
     date.strftime("%d-%m-%Y o %H:%M")
   end
+
+  def clear_both
+    "<div style='clear: both;'></div>".html_safe
+  end
 end

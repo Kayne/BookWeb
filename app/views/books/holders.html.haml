@@ -5,12 +5,12 @@
       - @assigments.each do |a|
          - count = count + 1
          - if count > 4
-            %div{:style => "clear: both;"}
+            = clear_both
             - count = 0
          %div{:class => "books_show"}
             %strong= link_to a.user.username, :controller => "/profiles", :action => "show", :id => a.user.username
             %br/
             = link_to image_tag(a.user.avatar.url(:thumb), :class => "glow"), {:controller => "profiles", :action => "show", :id => a.user.username}
-      %div{:style => "clear: both;"}
+      = clear_both
    - else
       %p Nikt nie posiada tej książki.

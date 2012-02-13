@@ -5,7 +5,7 @@
    - @books.each do |b|
       - count = count + 1
       - if count > 3
-         %div{:style => "clear: both;"}
+         = clear_both
          - count = 0
       %div{:class => "books_show"}
          %strong= link_to b.book.title, :action => "show", :id => b.book.slug
@@ -15,7 +15,7 @@
          %br/
          = link_to image_tag(b.book.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.book.slug }
          %br/
-   %div{:style => "clear: both;"}
+   = clear_both
 %br/
 %br/
 %p= link_to "Wróć na główną", :controller => "books"

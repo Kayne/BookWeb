@@ -10,13 +10,13 @@
       - @paginate.each do |b|
          - count = count + 1
          - if count > 3
-            %div{:style => "clear: both;"}
+            = clear_both
             - count = 0
          %div{:class => "books_show"}
             %strong= link_to b.title, {:action => "show", :id => b.slug }
             %br/
             = link_to image_tag(b.photo.url(:thumb), :class => "glow"), {:action => "show", :id => b.slug }
-      %div{:style => "clear: both;"}
+      = clear_both
       %br/
       %br/
    %p= paginate @paginate
