@@ -1,25 +1,23 @@
 #topHeader
    %p
-      - if !user_signed_in? then
-         %span
+      = link_to "Strona główna", books_path
+      |
+      = link_to "Profile użytkowników", :controller => "/profiles"
+      - if user_signed_in? then
+         |
+         = link_to "Mój profil", :controller => "/profiles", :action => "show", :id => current_user.username
+         |
+         = link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my"
+         |
+         = link_to "Dodaj nową książkę", new_book_path
+      %span{:class => "right"}
+         - if !user_signed_in? then
             Jesteś nie zalogowany.
             = link_to "Zaloguj się!", new_user_session_path
             Nie masz konta?
             = link_to "Zarejestruj się!", new_user_registration_path
-      - else
-         %span
+         - else
             Zalogowany jako
             = link_to current_user.username, edit_user_registration_path
             |
             = link_to "Wyloguj się", destroy_user_session_path, :method => :delete
-      %span{:class => "right"}
-         = link_to "Strona główna", books_path
-         |
-         = link_to "Profile użytkowników", :controller => "/profiles"
-         - if user_signed_in? then
-            |
-            = link_to "Mój profil", :controller => "/profiles", :action => "show", :id => current_user.username
-            |
-            = link_to "Zobacz swoje pozycje", :controller => "/books", :action => "my"
-            |
-            = link_to "Dodaj nową książkę", new_book_path
