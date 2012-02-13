@@ -26,6 +26,5 @@
       = search_form_for @query do |f|
          %p
             = f.label :title_or_desc_or_author_cont, "Wpisz fragment tytułu, opisu lub autora", :style => "width: 260px;"
-            = f.text_field :title_or_desc_or_author_cont
-         %p
-            = f.submit
+            = f.text_field :title_or_desc_or_author_cont, :style => "width: 180px;"
+            = f.submit "Szukaj"
