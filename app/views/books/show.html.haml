@@ -4,13 +4,14 @@
 .left_column
    %p
       = link_to image_tag(@book.photo.url(:medium)), @book.photo.url, :rel => "lightbox"
+   %p
+      %strong Ocena książki:
+      = rate_for_this_book(@rate, @all_rates)
 .right_column
    %p
       = markdown(@book.desc)
 %div{:style => "clear: both;"}
    %p{:style => "text-align: center;"}
-      %strong Ocena książki:
-      = rate_for_this_book(@rate, @all_rates)
       %br/
       = link_to "Pokaż użytkowników, posiadających tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
       |
