@@ -9,6 +9,9 @@
       = markdown(@book.desc)
 %div{:style => "clear: both;"}
    %p{:style => "text-align: center;"}
+      %strong Ocena książki:
+      #{number_with_precision(@rate, :precision => 2, :separator => '.')} na 6 (#{@all_rates} opinii)
+      %br/
       = link_to "Pokaż użytkowników, posiadających tą książkę", {:action => "holders", :id => @book.id}, :remote => true, :"data-update" => "holders"
       |
       = link_to "Pokaż opinie użytkowników o tej książce", {:action => "opinions", :id => @book.id}, :remote => true, :"data-update" => "opinions"

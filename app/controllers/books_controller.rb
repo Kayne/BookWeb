@@ -11,6 +11,14 @@ before_filter :only_admin!, :only => [:edit, :update]
   def show
   # Need authorization
     @book = Book.find(params[:id])
+    rates = Opinion.select('rate').find_all_by_book_id(@book.id)
+    @all_rates = 0
+    end_rate = 0.0
+    rates.each do |rate|
+      @all_rates = @all_rates + 1
+      end_rate += rate.rate.to_i
+    end
+    @rate = end_rate/@all_rates
     if user_signed_in?
       @assigment = Booksassigment.find_by_book_id_and_user_id(@book.id, current_user.id)
     end
