@@ -3,6 +3,17 @@
    %p
       Poniżej znajduje się lista książek. Jeżeli nie widzisz tam swojej książki, to
       = link_to "dodaj ją!", new_book_path
+   %p
+      - if not params[:page].nil?
+         - get = "?page=#{params[:page]}"
+      - else
+         - get = ""
+   %div{:style => "margin: 0 auto; width: 320px;"}
+      = form_tag (books_path + get), :method => :get do
+         = submit_tag "Sortuj po"
+         = select_tag :order, '<option value="n">nazwie</option><option value="c">dacie dodania</option><option value="m">dacie modyfikacji</option>'.html_safe
+         = select_tag :type, '<option value="a">rosnąco</option><option value="d">malejąco</option>'.html_safe
+      = clear_both
    %p{:class => "pagination"}
       = my_page_entries_info(@paginate, {:entry_name_single => "książke", :entry_name_plural => "książek", :entry_name_few => "książki"} ).html_safe
    %div
@@ -19,7 +30,7 @@
       = clear_both
       %br/
       %br/
-   %p= paginate @paginate
+   %p= paginate @paginate, :params => {:page => params[:page]}
 .search_form
    %p
       Nie widzisz interesujących pozycji? Skorzystaj z wyszukiwarki!

@@ -4,8 +4,26 @@ before_filter :authenticate_user!, :only => [:new, :create, :my, :destroy, :edit
 before_filter :only_admin!, :only => [:edit, :update]
 
   def index
-    @query = Book.search(params[:q])
-    @paginate = @query.result(:distinct => true).page(params[:page])
+    order = "title"
+    type = "DESC"
+    if not params[:order].nil?
+      if params[:order] == "c"
+        order = "created_at"
+      elsif params[:order] == "n"
+        order = "title"
+      elsif params[:order] == "m"
+        order = "updated_at"
+      end
+    end
+    if not params[:type].nil?
+      if params[:type] == "d"
+        type = "DESC"
+      else
+        type = "ASC"
+      end
+    end
+    @query = Book.order("#{order} #{type}").search(params[:q])
+    @paginate = @query.result(:distinct => true).order("#{order} #{type}").page(params[:page])
   end
 
   def show
