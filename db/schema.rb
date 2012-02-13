@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120212235309) do
+ActiveRecord::Schema.define(:version => 20120213142724) do
 
   create_table "books", :force => true do |t|
     t.string   "title",              :null => false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20120212235309) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "slug",               :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "books", ["slug"], :name => "index_books_on_slug", :unique => true
