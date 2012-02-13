@@ -31,6 +31,8 @@
             %p{:class => "form"}
                = f.label :title, "Tytuł opinii"
                = f.text_field :title
+               = f.label :rate, "Ocena", :style => "width: 50px; margin-left: 50px;"
+               = f.select :rate, '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>'.html_safe
             %p{:class => "form"}
                = f.text_area :text, :rows => 10, :cols => 80
             %p{:class => "form"}

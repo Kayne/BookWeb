@@ -28,7 +28,7 @@ before_filter :only_admin!, :only => [:edit, :update]
 
   def opinion_add
     if not params[:opinion].nil? or not params[:opinion].empty?
-      Opinion.add_new_opinion(params[:opinion][:book_id], current_user.id, params[:opinion][:title], params[:opinion][:text])
+      Opinion.add_new_opinion(params[:opinion][:book_id], current_user.id, params[:opinion][:title], params[:opinion][:text], params[:opinion][:rate])
       flash[:notice] = "Dodano opinię."
       redirect_to book_path(params[:opinion][:book_id])
     end

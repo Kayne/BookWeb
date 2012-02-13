@@ -8,6 +8,7 @@
             %th{:scope => "cols", :style => "width: 165px;"} Data
             %th{:scope => "cols", :style => "width: 165px;"} Tytuł
             %th{:scope => "cols", :style => "width: 400px;"} Treść
+            %th{:scope => "cols", :style => "width: 50px;"} Ocena
       %tbody
          - @opinions.each do |opinion|
             %tr
@@ -15,5 +16,6 @@
                %td{:style => "text-align: center;"}= human_date(opinion.created_at)
                %td{:style => "text-align: center;"}= opinion.title
                %td= markdown(opinion.text)
+               %td{:style => "text-align: center;"}= "#{opinion.rate}/6"
 - else
    %p Nie dodano jeszcze żadnych opini.
