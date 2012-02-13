@@ -6,7 +6,7 @@
          - count = count + 1
          - if count > 4
             = clear_both
-            - count = 0
+            - count = 1
          %div{:class => "books_show"}
             %strong= link_to a.user.username, :controller => "/profiles", :action => "show", :id => a.user.username
             %br/
