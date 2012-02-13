@@ -14,7 +14,7 @@
    %div{:class => "right"}
       %p
          %span{:class => "right"}
-            - if !user_signed_in? then
+            - if not user_signed_in? then
                Nie masz konta?
                = link_to "Zarejestruj się!", new_user_registration_path
             - else
@@ -22,9 +22,10 @@
                = link_to current_user.username, edit_user_registration_path
                |
                = link_to "Wyloguj się", destroy_user_session_path, :method => :delete
-   %div
-      = form_tag user_session_path, :class => "right", :style => "margin-right: 5px;" do
-         = text_field_tag 'user[email]', nil, :style => "width: 100px; margin-right: 5px;"
-         = password_field_tag 'user[password]', nil, :style => "width: 100px;"
-         = check_box_tag 'user[remember_me]', 1, nil, :style => "width: 25px;"
-         = submit_tag "Zaloguj"
+   - if not user_signed_in? then
+      %div
+         = form_tag user_session_path, :class => "right", :style => "margin-right: 5px;" do
+            = text_field_tag 'user[login]', nil, :style => "width: 100px; margin-right: 5px;", :placeholder => "Login"
+            = password_field_tag 'user[password]', nil, :style => "width: 100px;", :placeholder => "Hasło"
+            = check_box_tag 'user[remember_me]', 1, nil, :style => "width: 25px;"
+            = submit_tag "Zaloguj"
