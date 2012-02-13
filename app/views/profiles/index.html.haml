@@ -22,7 +22,7 @@
    = link_to "Powrót na stronę główną", :controller => "books"
 .search_form
    %p 
-      Lista zalogowanych użytkowników
+      Ostatnio aktywni użytkownicy
       - id = 0
       - id = current_user.id if user_signed_in?
       - User.online_list(id).to_a.each do |u|
