@@ -24,7 +24,7 @@
                = link_to "Wyloguj się", destroy_user_session_path, :method => :delete
    - if not user_signed_in? then
       %div
-         = form_tag user_session_path, :class => "right", :style => "margin-right: 5px;" do
+         = form_tag user_session_path, :class => "right", :style => "margin-right: 5px; margin-top: 6px;" do
             = text_field_tag 'user[login]', nil, :style => "width: 100px; margin-right: 5px;", :placeholder => "Login"
             = password_field_tag 'user[password]', nil, :style => "width: 100px;", :placeholder => "Hasło"
             = check_box_tag 'user[remember_me]', 1, nil, :style => "width: 25px;"
